@@ -33,7 +33,7 @@ public class ItemSpawn : MonoBehaviour
     void ItemSpawner()
     {
         float randomX = Random.Range(-8f, 8f);
-        int randomItem = Random.Range(1, 4);
+        int randomItem = Random.Range(1, 5);
         Vector3 itemSpawner = new Vector3(randomX, 0.3f, 0f);
 
         switch (randomItem)
@@ -47,9 +47,9 @@ public class ItemSpawn : MonoBehaviour
             case 3:
                 itemType = ItemType.Item_3;
                 break;
-            // case 4:
-            //     itemType = ItemType.Item_4;
-            //     break;
+            case 4:
+                itemType = ItemType.Item_4;
+                break;
             // case 5:
             //     itemType = ItemType.Item_5;
             //     break;

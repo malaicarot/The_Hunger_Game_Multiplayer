@@ -15,10 +15,13 @@ public class Shooting : PooledObject
 {
     BulletType type;
     [SerializeField] Transform firePoint;
+    Controller player;
 
-void Start(){
-    firePoint.rotation = Quaternion.Euler(0, 0, 0);
-}
+    void Start()
+    {
+        player = FindObjectOfType<Controller>();
+
+    }
     void Update()
     {
         float fire = Input.GetAxis("Fire1");
@@ -44,18 +47,13 @@ void Start(){
                 break;
         }
 
-        BulletShooter bullet = BulletPool.SingletonBulletPool.GetBullet(type.ToString(), firePoint.position, Quaternion.Euler(0, 0, 0));
+        BulletShooter bullet = BulletPool.SingletonBulletPool.GetBullet(type.ToString(), firePoint.position, Quaternion.identity);
         if (bullet != null)
         {
-            Vector2 direction = firePoint.right;
-            if(transform.localScale.x > 0){
-                direction = -firePoint.right;
-            }
-            
+            Vector2 direction = -firePoint.right;
             bullet.InitializeBullet(direction);
-
         }
-        
+
 
     }
 }

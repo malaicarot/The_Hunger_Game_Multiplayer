@@ -57,14 +57,12 @@ public class Controller : MonoBehaviour
 
         if (jumpInput != 0 && isGrounded)
         {
-            // rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
 
         if(rb.velocity.y < 0){
             rb.velocity = new Vector2(rb.velocity.x, Mathf.Max(rb.velocity.y, fallSpeed));
         }
-
     }
 
     void GroundChecking()

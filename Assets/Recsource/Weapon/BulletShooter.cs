@@ -22,7 +22,6 @@ public class BulletShooter : PooledObject
         }else{
             Debug.Log(gameObject);
         }
-        
     }
 
     void OnTriggerEnter2D(Collider2D other){

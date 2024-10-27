@@ -7,7 +7,9 @@ public enum WeaponType
 {
     Pistol,
     Rifle,
-    Sniper
+    Sniper,
+    Shootgun,
+    Bomb
 }
 [RequireComponent(typeof(PooledObject))]
 
@@ -21,7 +23,7 @@ public class ItemMovement : PooledObject
     Vector3 startPosition;
 
     WeaponSpawn weapon;
-    
+
     void Start()
     {
         weapon = FindObjectOfType<WeaponSpawn>();
@@ -49,32 +51,32 @@ public class ItemMovement : PooledObject
     {
         if (other.gameObject.CompareTag("Player"))
         {
-           Transform hand = other.transform.Find("Hand");
+            Transform hand = other.transform.Find("Hand");
             string name = gameObject.name.ToString();
             Release();
             switch (name)
             {
                 case "Item_1":
-                    // EquipWeapon(WeaponType.Pistol);
                     weaponType = WeaponType.Pistol;
                     break;
                 case "Item_2":
-                    // EquipWeapon(WeaponType.Rifle);
                     weaponType = WeaponType.Rifle;
                     break;
                 case "Item_3":
-                    // EquipWeapon(WeaponType.Sniper);
                     weaponType = WeaponType.Sniper;
                     break;
-                    // case "Item_4":
-                    //     // EquipWeapon("Rifle");
-                    //     // Debug.Log("item 4");
-                    //     break;
+                case "Item_4":
+                    weaponType = WeaponType.Bomb;
+                    break;
                     // case "Item_5":
                     //     // EquipWeapon("Rifle");
                     //     break;
             }
-            weapon.EquipWeapon(weaponType, hand);
+            if (weaponType != WeaponType.Bomb)
+            {
+                weapon.EquipWeapon(weaponType, hand);
+            }
+
         }
     }
 }

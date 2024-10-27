@@ -25,10 +25,6 @@ public class WeaponSpawn : MonoBehaviour
             if (currentWeapon != null)
             {
                 ReturnWeaponToPool();
-                // currentWeapon.Release();
-                // currentWeapon = null;
-                // currentWeaponType = "";
-                // Debug.Log("Return weapon to pool: " + currentWeapon);
             }
 
             timeExits = 0;
@@ -59,13 +55,10 @@ public class WeaponSpawn : MonoBehaviour
             if (currentWeapon != null && currentWeaponType != weaponType.ToString())
             {
                 Debug.Log($"Diferrence weapon: {currentWeaponType} != {weaponType}");
-                // currentWeapon.Release();
-                // currentWeapon = null;
-                // currentWeaponType = "";
                 ReturnWeaponToPool();
             }
 
-            Shooting weapon = WeaponPool.SingletonWeaponPool.CreateWeapon(weaponType, targerPosition.position, Quaternion.Euler(0, 0, 0));
+            Shooting weapon = WeaponPool.SingletonWeaponPool.CreateWeapon(weaponType, targerPosition.position, Quaternion.identity);
             currentWeapon = weapon;
             timeExits = weaponDuration;
             currentWeaponType = weaponType.ToString();
