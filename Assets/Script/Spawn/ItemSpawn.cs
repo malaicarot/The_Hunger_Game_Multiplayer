@@ -32,8 +32,8 @@ public class ItemSpawn : MonoBehaviour
 
     void ItemSpawner()
     {
-        float randomX = Random.Range(-8f, 8f);
-        int randomItem = Random.Range(1, 5);
+        float randomX = Random.Range(-20f, 20f);
+        int randomItem = Random.Range(1, 6);
         Vector3 itemSpawner = new Vector3(randomX, 0.3f, 0f);
 
         switch (randomItem)
@@ -50,9 +50,9 @@ public class ItemSpawn : MonoBehaviour
             case 4:
                 itemType = ItemType.Item_4;
                 break;
-            // case 5:
-            //     itemType = ItemType.Item_5;
-            //     break;
+            case 5:
+                itemType = ItemType.Item_5;
+                break;
         }
         ItemPool.SingletonItemPool.GetItem(itemType, itemSpawner, Quaternion.identity);
     }

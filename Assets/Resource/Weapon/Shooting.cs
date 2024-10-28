@@ -60,6 +60,9 @@ public class Shooting : PooledObject
             case "Sniper":
                 type = BulletType.Bullet_Sniper;
                 break;
+            case "Shotgun":
+                type = BulletType.Bullet_Shotgun;
+                break;
         }
 
         BulletShooter bullet = BulletPool.SingletonBulletPool.GetBullet(type.ToString(), firePoint.position, Quaternion.identity);

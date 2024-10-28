@@ -10,25 +10,37 @@ public class BulletShooter : PooledObject
 
     Controller player;
 
-    void Awake(){
+    void Awake()
+    {
         player = FindObjectOfType<Controller>();
         rb = GetComponent<Rigidbody2D>();
     }
 
-    public void InitializeBullet(Vector2 direction){
-        if(rb != null){
+    public void InitializeBullet(Vector2 direction)
+    {
+        if (rb != null)
+        {
             rb.velocity = direction * speed;
 
-        }else{
+        }
+        else
+        {
             Debug.Log(gameObject);
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other){
-        if(other.gameObject.CompareTag("Player")){
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
             Rigidbody2D enemyRb = other.GetComponent<Rigidbody2D>();
             Vector2 forceDirection = (other.transform.position - transform.position).normalized;
+            enemyRb.velocity = Vector2.zero;
             enemyRb.AddForce(forceDirection * bulletForce, ForceMode2D.Impulse);
+            Release();
+        }
+        else if (other.gameObject.CompareTag("Boundary"))
+        {
             Release();
         }
     }

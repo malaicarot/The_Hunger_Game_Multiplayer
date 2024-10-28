@@ -8,11 +8,10 @@ public enum WeaponType
     Pistol,
     Rifle,
     Sniper,
-    Shootgun,
+    Shotgun,
     Bomb
 }
 [RequireComponent(typeof(PooledObject))]
-
 public class ItemMovement : PooledObject
 {
     float itemDuration = 6f;
@@ -67,19 +66,19 @@ public class ItemMovement : PooledObject
                 case "Item_4":
                     weaponType = WeaponType.Bomb;
                     break;
-                    // case "Item_5":
-                    //     // EquipWeapon("Rifle");
-                    //     break;
+                case "Item_5":
+                    weaponType = WeaponType.Shotgun;
+                    break;
             }
             if (weaponType != WeaponType.Bomb)
             {
                 weapon.EquipWeapon(weaponType, hand);
-            }else{
+            }
+            else
+            {
                 BombController bombBag = FindObjectOfType<BombController>();
                 bombBag.bombQuantity = 5;
-
             }
-
         }
     }
 }

@@ -8,6 +8,7 @@ TagManager:
   - Item
   - Enemy
   - Explode
+  - Boundary
   layers:
   - Default
   - TransparentFX
