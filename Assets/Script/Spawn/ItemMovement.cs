@@ -15,7 +15,6 @@ public enum WeaponType
 
 public class ItemMovement : PooledObject
 {
-
     float itemDuration = 6f;
     float amplitude = 0.5f;
     float frequency = 2f;
@@ -75,6 +74,10 @@ public class ItemMovement : PooledObject
             if (weaponType != WeaponType.Bomb)
             {
                 weapon.EquipWeapon(weaponType, hand);
+            }else{
+                BombController bombBag = FindObjectOfType<BombController>();
+                bombBag.bombQuantity = 5;
+
             }
 
         }

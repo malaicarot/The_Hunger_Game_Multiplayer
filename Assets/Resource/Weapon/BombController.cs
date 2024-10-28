@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BombController : MonoBehaviour
 {
-    [SerializeField] int bombQuantity;
+    [SerializeField] public int bombQuantity;
     [SerializeField] int maxQuantity = 5;
     void Start()
     {

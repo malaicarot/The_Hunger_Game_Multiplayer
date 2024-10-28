@@ -5,11 +5,10 @@ using UnityEngine.AI;
 
 public class MapController : MonoBehaviour
 {
-    // List<PlatformEffector2D> floors;
-    PlatformEffector2D[] floors;
+    List<PlatformEffector2D> floors;
     void Start()
     {
-        List<PlatformEffector2D> foundFloor = new List<PlatformEffector2D>();
+        floors = new List<PlatformEffector2D>();
         foreach (Transform child in transform)
         {
             if (child.name == "Floor")
@@ -19,11 +18,10 @@ public class MapController : MonoBehaviour
                 if (effector != null)
                 {
                     Debug.Log(effector);
-                    foundFloor.Add(effector);
+                    floors.Add(effector);
                 }
             }
         }
-        floors = foundFloor.ToArray();
     }
 
     IEnumerator ResetSurfaceArc()
@@ -33,7 +31,6 @@ public class MapController : MonoBehaviour
         {
             floor.surfaceArc = 180;
         }
-
     }
 
     public void ActiveResetSurfaceArc()
@@ -47,8 +44,5 @@ public class MapController : MonoBehaviour
         {
             floor.surfaceArc *= -1;
         }
-
     }
-
-
 }

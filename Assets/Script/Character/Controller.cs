@@ -95,6 +95,5 @@ public class Controller : MonoBehaviour
         if(other.CompareTag("Boundary")){
             Debug.Log("Die");
         }
-
     }
 }
