@@ -45,23 +45,9 @@ public class Controller : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
 
-        if (isMoving)
-        {
-            rb.velocity = new Vector2(moveVelocity.x, rb.velocity.y);
-        }
-        else
-        {
-            rb.velocity = Vector2.zero;
-        }
-
-
         if (jumpInput != 0 && isGrounded)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-        }
-
-        if(rb.velocity.y < 0){
-            rb.velocity = new Vector2(rb.velocity.x, Mathf.Max(rb.velocity.y, fallSpeed));
         }
     }
 
@@ -74,7 +60,16 @@ public class Controller : MonoBehaviour
 
     void FixedUpdate()
     {
-
         GroundChecking();
+        if (isMoving)
+        {
+            rb.velocity = new Vector2(moveVelocity.x, rb.velocity.y);
+        }
+
+        if (rb.velocity.y < 0)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, Mathf.Max(rb.velocity.y, fallSpeed));
+        }
+
     }
 }

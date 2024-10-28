@@ -25,9 +25,9 @@ public class BulletShooter : PooledObject
     }
 
     void OnTriggerEnter2D(Collider2D other){
-        if(other.CompareTag("Enemy")){
+        if(other.gameObject.CompareTag("Player")){
             Rigidbody2D enemyRb = other.GetComponent<Rigidbody2D>();
-            Vector2 forceDirection = other.transform.position - transform.position;
+            Vector2 forceDirection = (other.transform.position - transform.position).normalized;
             enemyRb.AddForce(forceDirection * bulletForce, ForceMode2D.Impulse);
             Release();
         }

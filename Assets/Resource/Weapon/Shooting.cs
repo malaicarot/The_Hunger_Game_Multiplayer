@@ -34,7 +34,6 @@ public class Shooting : PooledObject
         }
         else
         {
-            // Release();
             StartCoroutine(Explosion());
         }
     }
