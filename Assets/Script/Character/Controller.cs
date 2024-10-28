@@ -16,6 +16,11 @@ public class Controller : MonoBehaviour
     bool isMoving = false;
     bool isGrounded = true;
 
+    /***************************************************/
+    bool isDown = false;
+    // PlatformEffector2D secondFloor;
+    MapController map;
+    /***************************************************/
     Vector2 moveInput;
     Vector2 moveVelocity;
 
@@ -23,18 +28,24 @@ public class Controller : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        map = FindObjectOfType<MapController>();
+        // GameObject Floor = GameObject.Find("SecondFloor");
+        // secondFloor = Floor.GetComponent<PlatformEffector2D>();
     }
 
     void Update()
     {
         float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveVertical = Input.GetAxis("Vertical");
         float jumpInput = Input.GetAxisRaw("Jump");
+        /***************************************************/
         isMoving = moveHorizontal != 0;
-
+        isDown = moveVertical != 0;
         animator.SetBool("isMoving", isMoving);
-
+        /***************************************************/
         moveInput = new Vector2(moveHorizontal, 0);
         moveVelocity = moveInput * speed;
+        /***************************************************/
 
         if (moveInput.x > 0)
         {
@@ -44,7 +55,7 @@ public class Controller : MonoBehaviour
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
-
+        /***************************************************/
         if (jumpInput != 0 && isGrounded)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
@@ -65,10 +76,24 @@ public class Controller : MonoBehaviour
         {
             rb.velocity = new Vector2(moveVelocity.x, rb.velocity.y);
         }
+        /***************************************************/
+
+        if (isDown)
+        {
+            map.SettingSurfaceArc();
+            map.ActiveResetSurfaceArc();
+        }
+        /***************************************************/
 
         if (rb.velocity.y < 0)
         {
             rb.velocity = new Vector2(rb.velocity.x, Mathf.Max(rb.velocity.y, fallSpeed));
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other){
+        if(other.CompareTag("Boundary")){
+            Debug.Log("Die");
         }
 
     }
