@@ -284,7 +284,7 @@ MonoBehaviour:
   prefixField: -1
   Synchronization: 3
   OwnershipTransfer: 0
-  observableSearch: 1
+  observableSearch: 2
   ObservedComponents:
   - {fileID: -5153167787626124558}
   sceneViewId: 0
@@ -357,7 +357,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 165
+  field of view: 40
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -396,7 +396,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 6969761991501044582}
-  offset: {x: 0, y: 0, z: -1}
+  offset: {x: 0, y: 0, z: -20}
 --- !u!1 &8659088277597731885
 GameObject:
   m_ObjectHideFlags: 0

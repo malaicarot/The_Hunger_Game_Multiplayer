@@ -301,11 +301,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a551615f9e97d3419e045486975fdcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localScript:
-  - {fileID: 5729806215390346336}
-  - {fileID: 7963070679403125136}
-  localObject:
-  - {fileID: 2434110221215752247}
+  localScripts: []
+  localObjects: []
 --- !u!114 &-1430448386236647211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -396,7 +393,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 165
+  field of view: 40
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -435,7 +432,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 6569144396784463453}
-  offset: {x: 0, y: 0, z: -1}
+  offset: {x: 0, y: 0, z: -20}
 --- !u!1 &6068755998667499146
 GameObject:
   m_ObjectHideFlags: 0

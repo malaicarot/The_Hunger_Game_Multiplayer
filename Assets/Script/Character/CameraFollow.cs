@@ -11,7 +11,7 @@ public class CameraFollow : MonoBehaviour
     {
         if(target != null){
             transform.position = target.position + offset;
-            transform.rotation = Quaternion.Euler(0, 0, target.eulerAngles.z);;
+            transform.rotation = Quaternion.Euler(0, 0, target.eulerAngles.z);
         }
         
     }
