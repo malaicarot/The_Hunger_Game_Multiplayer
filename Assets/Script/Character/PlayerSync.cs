@@ -45,23 +45,20 @@ public class PlayerSync : MonoBehaviourPun, IPunObservable
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
 {
-    if (stream.IsWriting) //nếu Chúng ta sở hữu nhân vật này, được chứng minh khi ta đang Viết vào server
+    if (stream.IsWriting) 
     {
-        // Chúng ta sở hữu người chơi này: gửi dữ liệu của chúng ta cho những người khác
         stream.SendNext(transform.position);
         stream.SendNext(transform.rotation);
         stream.SendNext(playerRb.velocity);
         stream.SendNext(playerRb.angularVelocity);
     }
-    else // không thì ta đang nhận tin
+    else 
     {
-        // Người chơi mạng, nhận dữ liệu
         latestPos = (Vector3)stream.ReceiveNext();
         latestRot = (Quaternion)stream.ReceiveNext();
         latestVelocity = (Vector2)stream.ReceiveNext();
         latestAngularVelocity = (float)stream.ReceiveNext();
        
-      // Bù trễ mạng
         currentTime = 0.0f;
         lastPacketTime = currentPacketTime;
         currentPacketTime = info.SentServerTime;
@@ -76,7 +73,6 @@ void Update()
 {
     if (!photonView.IsMine)
     {
-        // Tính toán thời gian để đạt được trạng thái mới
         double timeToReachGoal = currentPacketTime - lastPacketTime;
         currentTime += Time.deltaTime;
 
@@ -84,7 +80,6 @@ void Update()
             return;
         }
 
-        // Nội suy vị trí, quay, vận tốc và vận tốc góc dựa trên thời gian hiện tại
         transform.position = Vector3.Lerp(positionAtLastPacket, latestPos, (float)(currentTime / timeToReachGoal));
         transform.rotation = Quaternion.Lerp(rotationAtLastPacket, latestRot, (float)(currentTime / timeToReachGoal));
         playerRb.velocity = Vector2.Lerp(velocityAtLastPacket, latestVelocity, (float)(currentTime / timeToReachGoal));
