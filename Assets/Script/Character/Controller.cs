@@ -24,6 +24,8 @@ public class Controller : MonoBehaviour
     Vector2 moveInput;
     Vector2 moveVelocity;
 
+    Quaternion playerRotation = Quaternion.Euler(0, 360, 0);
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -50,10 +52,13 @@ public class Controller : MonoBehaviour
         if (moveInput.x > 0)
         {
             transform.rotation = Quaternion.Euler(0, 180, 0);
+                        // transform.rotation = playerRotation / ;
+
         }
         else if (moveInput.x < 0)
         {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
+            // transform.rotation = Quaternion.Euler(0, 0, 0);
+            transform.rotation = playerRotation;
         }
         /***************************************************/
         if (jumpInput != 0 && isGrounded)

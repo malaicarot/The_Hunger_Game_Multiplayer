@@ -49,7 +49,6 @@ public class LobbyController : MonoBehaviourPunCallbacks
     {
         Debug.Log("Received room list");
         createdRooms = roomList;
-
     }
 
     //GUI dung de hien thi giao dien nguoi dung
@@ -62,7 +61,7 @@ public class LobbyController : MonoBehaviourPunCallbacks
         // Hiển thị trạng thái kết nối và nút tạo phòng
         GUILayout.BeginHorizontal();
 
-        GUILayout.Label("Trạng thái: " + PhotonNetwork.NetworkClientState); // Hiển thị trạng thái kết nối hiện tại
+        GUILayout.Label("Status: " + PhotonNetwork.NetworkClientState); // Hiển thị trạng thái kết nối hiện tại
 
         // Kiểm tra nếu đang kết nối, đang gia nhập phòng hoặc chưa kết nối lobby thì nút sẽ bị vô hiệu hóa
         if (joiningRoom || !PhotonNetwork.IsConnected || PhotonNetwork.NetworkClientState != ClientState.JoinedLobby)
@@ -75,7 +74,7 @@ public class LobbyController : MonoBehaviourPunCallbacks
         // Cho phép nhập tên phòng và nút tạo phòng
         roomName = GUILayout.TextField(roomName, GUILayout.Width(250)); // Hiển thị ô nhập tên phòng
 
-        if (GUILayout.Button("Tạo phòng", GUILayout.Width(125))) // Nút tạo phòng
+        if (GUILayout.Button("Create Room", GUILayout.Width(125))) // Nút tạo phòng
         {
             if (roomName != "") // Kiểm tra nếu tên phòng trống thì không thực hiện tạo phòng
             {
@@ -84,7 +83,7 @@ public class LobbyController : MonoBehaviourPunCallbacks
                 RoomOptions roomOptions = new RoomOptions(); // Thiết lập các tùy chọn phòng
                 roomOptions.IsOpen = true; // Phòng mở (cho phép người khác tham gia)
                 roomOptions.IsVisible = true; // Phòng hiển thị trong danh sách
-                roomOptions.MaxPlayers = (byte)10; // Số người chơi tối đa (có thể thay đổi)
+                roomOptions.MaxPlayers = 5; // Số người chơi tối đa (có thể thay đổi)
 
                 PhotonNetwork.JoinOrCreateRoom(roomName, roomOptions, TypedLobby.Default); // Tạo hoặc tham gia phòng với tên đã nhập
             }
@@ -97,7 +96,7 @@ public class LobbyController : MonoBehaviourPunCallbacks
 
         if (createdRooms.Count == 0) // Kiểm tra nếu không có phòng nào
         {
-            GUILayout.Label("Hiện chưa có phòng nào...");
+            GUILayout.Label("There are currently no rooms available...");
         }
         else
         {
@@ -110,7 +109,7 @@ public class LobbyController : MonoBehaviourPunCallbacks
 
                 GUILayout.FlexibleSpace(); // Thêm khoảng trống linh hoạt
 
-                if (GUILayout.Button("Tham gia phòng")) // Nút tham gia phòng
+                if (GUILayout.Button("Join")) // Nút tham gia phòng
                 {
                     joiningRoom = true;
 
@@ -137,7 +136,7 @@ public class LobbyController : MonoBehaviourPunCallbacks
 
         // Kiểm tra trạng thái kết nối và không đang gia nhập phòng thì nút làm mới mới hoạt động
         GUI.enabled = (PhotonNetwork.NetworkClientState == ClientState.JoinedLobby || PhotonNetwork.NetworkClientState == ClientState.Disconnected) && !joiningRoom;
-        if (GUILayout.Button("Làm mới", GUILayout.Width(100))) // Nút làm mới danh sách phòng
+        if (GUILayout.Button("Refresh", GUILayout.Width(100))) // Nút làm mới danh sách phòng
         {
             if (PhotonNetwork.IsConnected) // Kiểm tra nếu đã kết nối
             {
@@ -156,7 +155,7 @@ public class LobbyController : MonoBehaviourPunCallbacks
         if (joiningRoom)
         {
             GUI.enabled = true; // Bật giao diện hiển thị thông báo
-            GUI.Label(new Rect(900 / 2 - 50, 400 / 2 - 10, 100, 20), "Đang kết nối..."); // Hiển thị thông báo
+            GUI.Label(new Rect(900 / 2 - 50, 400 / 2 - 10, 100, 20), "Is connecting..."); // Hiển thị thông báo
         }
     }
 
@@ -169,14 +168,6 @@ public class LobbyController : MonoBehaviourPunCallbacks
 
     //OnJoinRoomFailed duoc goi khi tham gia phong that bai
     public override void OnJoinRoomFailed(short returnCode, string message)
-    {
-        Debug.Log($"Join room failed. Error code: {returnCode}. Notification: {message}. Maybe room is full, close or doesn't exits!");
-        joiningRoom = false;
-    }
-
-    //OnJoinRandomFailed duoc tao khi tham gia phong ngau nhien that bai
-
-    public override void OnJoinRandomFailed(short returnCode, string message)
     {
         Debug.Log($"Join room failed. Error code: {returnCode}. Notification: {message}. Maybe room is full, close or doesn't exits!");
         joiningRoom = false;

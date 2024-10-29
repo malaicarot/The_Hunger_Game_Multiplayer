@@ -60,6 +60,8 @@ GameObject:
   - component: {fileID: 1287497509670653618}
   - component: {fileID: 3382196696521363651}
   - component: {fileID: 3565058332161462825}
+  - component: {fileID: -8871918550568253848}
+  - component: {fileID: 8691864884554053604}
   m_Layer: 0
   m_Name: PLayer_Green
   m_TagString: Player
@@ -249,6 +251,46 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 8
+--- !u!114 &-8871918550568253848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1841270527751504808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a551615f9e97d3419e045486975fdcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localScript:
+  - {fileID: 3565058332161462825}
+  - {fileID: 3603268099282273516}
+  localObject:
+  - {fileID: 8418446645824200005}
+--- !u!114 &8691864884554053604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1841270527751504808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: -8871918550568253848}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &8418446645824200005
 GameObject:
   m_ObjectHideFlags: 0

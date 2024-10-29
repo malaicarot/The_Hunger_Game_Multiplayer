@@ -13,11 +13,9 @@ public class MapController : MonoBehaviour
         {
             if (child.name == "Floor")
             {
-                Debug.Log(child);
                 PlatformEffector2D effector = child.GetComponent<PlatformEffector2D>();
                 if (effector != null)
                 {
-                    Debug.Log(effector);
                     floors.Add(effector);
                 }
             }

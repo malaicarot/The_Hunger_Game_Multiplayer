@@ -98,6 +98,8 @@ GameObject:
   - component: {fileID: 6276195787200787529}
   - component: {fileID: 5101633035446550325}
   - component: {fileID: 5729806215390346336}
+  - component: {fileID: 2839786582329701700}
+  - component: {fileID: -1430448386236647211}
   m_Layer: 0
   m_Name: PLayer_Pink
   m_TagString: Player
@@ -287,6 +289,46 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 8
+--- !u!114 &2839786582329701700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2239127728347695096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a551615f9e97d3419e045486975fdcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localScript:
+  - {fileID: 5729806215390346336}
+  - {fileID: 7963070679403125136}
+  localObject:
+  - {fileID: 2434110221215752247}
+--- !u!114 &-1430448386236647211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2239127728347695096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 2839786582329701700}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &2434110221215752247
 GameObject:
   m_ObjectHideFlags: 0

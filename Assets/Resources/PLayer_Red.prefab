@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 7152746940739895335}
   - component: {fileID: 4104079749751969020}
   - component: {fileID: 4837202509857116982}
+  - component: {fileID: 5471067801587219536}
+  - component: {fileID: -7587140465369691922}
   m_Layer: 0
   m_Name: PLayer_Red
   m_TagString: Player
@@ -203,6 +205,46 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 8
+--- !u!114 &5471067801587219536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2111168750663221419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a551615f9e97d3419e045486975fdcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localScript:
+  - {fileID: 4837202509857116982}
+  - {fileID: 2503451548646883783}
+  localObject:
+  - {fileID: 3291697978598337076}
+--- !u!114 &-7587140465369691922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2111168750663221419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 5471067801587219536}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &3291697978598337076
 GameObject:
   m_ObjectHideFlags: 0
