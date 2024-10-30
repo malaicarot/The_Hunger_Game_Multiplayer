@@ -11,14 +11,19 @@ public class Controller : MonoBehaviour
     [SerializeField] float checkDistance = 1f;
     [SerializeField] LayerMask groundMask;
 
+    Transform hand;
+
     Rigidbody2D rb;
     Animator animator;
     bool isMoving = false;
     bool isGrounded = true;
+    bool isDown = false;
+    bool isDeath = false;
+
 
     /***************************************************/
-    bool isDown = false;
-    // PlatformEffector2D secondFloor;
+
+
     MapController map;
     /***************************************************/
     Vector2 moveInput;
@@ -31,8 +36,7 @@ public class Controller : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         map = FindObjectOfType<MapController>();
-        // GameObject Floor = GameObject.Find("SecondFloor");
-        // secondFloor = Floor.GetComponent<PlatformEffector2D>();
+        hand = gameObject.transform.Find("Hand");
     }
 
     void Update()
@@ -44,6 +48,7 @@ public class Controller : MonoBehaviour
         isMoving = moveHorizontal != 0;
         isDown = moveVertical != 0;
         animator.SetBool("isMoving", isMoving);
+        animator.SetBool("isDeath", isDeath);
         /***************************************************/
         moveInput = new Vector2(moveHorizontal, 0);
         moveVelocity = moveInput * speed;
@@ -99,6 +104,9 @@ public class Controller : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other){
         if(other.CompareTag("Boundary")){
             Debug.Log("Die");
+            isDeath = true;
+            hand.gameObject.SetActive(false);
+            // Destroy(gameObject);
         }
     }
 }
