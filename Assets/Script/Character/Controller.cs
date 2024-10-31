@@ -103,7 +103,6 @@ public class Controller : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other){
         if(other.CompareTag("Boundary")){
-            Debug.Log("Die");
             isDeath = true;
             hand.gameObject.SetActive(false);
             // Destroy(gameObject);

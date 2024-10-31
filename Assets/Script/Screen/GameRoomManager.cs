@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class GameRoomManager : MonoBehaviourPunCallbacks
 {
-    public GameObject PlayerPrefabs;
+    public GameObject[] PlayerPrefabs;
     public Transform[] spawnPosition;
     void Start()
     {
@@ -13,9 +13,10 @@ public class GameRoomManager : MonoBehaviourPunCallbacks
             UnityEngine.SceneManagement.SceneManager.LoadScene("GameLobby");
             return;
         }
+        int playerIndex = PhotonNetwork.LocalPlayer.ActorNumber - 1;
 
-            Vector3 spawnPpoint = new Vector3(Random.Range(-18f, 18f), 0, 0);
-            PhotonNetwork.Instantiate (PlayerPrefabs.name, spawnPpoint, spawnPosition[Random.Range(0, spawnPosition.Length - 1)].rotation, 0);
+        Vector3 spawnPpoint = new Vector3(Random.Range(-18f, 18f), 0, 0);
+        PhotonNetwork.Instantiate(PlayerPrefabs[playerIndex].name, spawnPpoint, spawnPosition[Random.Range(0, spawnPosition.Length - 1)].rotation, 0);
     }
 
     void OnGUI()
@@ -42,7 +43,7 @@ public class GameRoomManager : MonoBehaviourPunCallbacks
         UnityEngine.SceneManagement.SceneManager.LoadScene("GameLobby");
     }
 
-        public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
+    public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
     {
         Debug.Log(newPlayer.NickName + " joined the room");
     }

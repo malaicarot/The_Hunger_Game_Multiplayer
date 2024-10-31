@@ -217,8 +217,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a551615f9e97d3419e045486975fdcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localScripts: []
-  localObjects: []
+  localScripts:
+  - {fileID: 4837202509857116982}
+  localObjects:
+  - {fileID: 3291697978598337076}
 --- !u!114 &-7587140465369691922
 MonoBehaviour:
   m_ObjectHideFlags: 0
