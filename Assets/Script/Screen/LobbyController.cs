@@ -2,188 +2,345 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine.UI;
+using ExitGames.Client.Photon;
+using Photon.Pun.Demo.Asteroids;
+
 public class LobbyController : MonoBehaviourPunCallbacks
 {
-    string playerName = "Player 1";
-    string gameVersion = "1.0";
-    List<RoomInfo> createdRooms = new List<RoomInfo>();
 
-    string roomName = "Room 1";
-    Vector2 roomListScroll = Vector2.zero;
+    [Header("Login Panel")]
+    [SerializeField] GameObject LoginPanel;
+    [SerializeField] InputField PlayerNameInput;
 
-    bool joiningRoom = false;
-    void Start()
+    [Header("Selection Panel")]
+    [SerializeField] GameObject SelectionPanel;
+
+    [Header("Create Room Panel")]
+    [SerializeField] GameObject CreateRoomPanel;
+    [SerializeField] InputField RoomNameInput;
+    [SerializeField] InputField MaxplayerInput;
+
+    [Header("Join Random Room Panel")]
+    [SerializeField] GameObject JoinRandomRoomPanel;
+
+    [Header("Room List Panel")]
+    [SerializeField] GameObject RoomListPanel;
+    [SerializeField] GameObject RoomListContent;
+    [SerializeField] GameObject RoomListEntryPrefab;
+
+
+    [Header("Inside Room Panel")]
+    [SerializeField] GameObject InsideRoomPanel;
+    [SerializeField] Button StartGameButton;
+    [SerializeField] GameObject PlayerListEntryPrefab;
+
+    private Dictionary<string, RoomInfo> cachedRoomList;
+    private Dictionary<string, GameObject> roomListEntries;
+    private Dictionary<int, GameObject> playerListEntries;
+
+    #region Unity
+    public void Awake()
     {
-        playerName = $"Player {Random.Range(1, 5)}";
-
-        //Dong bo canh tu dong
         PhotonNetwork.AutomaticallySyncScene = true;
-
-        //Kiem tra ket noi, neu chua ket noi thi ket noi theo thiet lap mac dinh
-        if (!PhotonNetwork.IsConnected)
-        {
-            // Thiet lap phien ban
-            PhotonNetwork.PhotonServerSettings.AppSettings.AppVersion = gameVersion;
-            // Thiet lap vung server co dinh
-            PhotonNetwork.PhotonServerSettings.AppSettings.FixedRegion = "eu";
-            // Ket noi toi Photon
-            PhotonNetwork.ConnectUsingSettings();
-        }
+        cachedRoomList = new Dictionary<string, RoomInfo>();
+        roomListEntries = new Dictionary<string, GameObject>();
+        PlayerNameInput.text = "Player " + Random.Range(1000, 10000);
     }
+    #endregion
 
-    //OnDisconnetedduoc goi khi Photon mat ket noi toi Photon Server
-    public override void OnDisconnected(DisconnectCause cause)
-    {
-        Debug.Log($"Disconected to server. Error code: {cause.ToString()}. Server Address: {PhotonNetwork.ServerAddress}");
-    }
-
-    // OnConnectedToMaster duoc goi khi ket noi thanh cong toi master server
+    #region PUN CALLBACKS
     public override void OnConnectedToMaster()
     {
-        Debug.Log("Connected to Mater server successfully!!!");
-        PhotonNetwork.JoinLobby(TypedLobby.Default);
+        this.SetActivePanel(SelectionPanel.name);
     }
 
-    //OnListRoomUpdate duoc goi khi nhan duoc danh sach phong
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
-        Debug.Log("Received room list");
-        createdRooms = roomList;
+        ClearRoomListView();
+        UpdateCachedRoomList(roomList);
+        UpdateRoomListView();
     }
 
-    //GUI dung de hien thi giao dien nguoi dung
-    void OnGUI()
+    public override void OnJoinedLobby()
     {
-        GUI.Window(0, new Rect(Screen.width / 2 - 450, Screen.height / 2 - 200, 900, 400), LobbyWindow, "Lobby");
+        cachedRoomList.Clear();
+        ClearRoomListView();
     }
-    void LobbyWindow(int index)
+
+    public override void OnLeftLobby()
     {
-        // Hiển thị trạng thái kết nối và nút tạo phòng
-        GUILayout.BeginHorizontal();
+        cachedRoomList.Clear();
+        ClearRoomListView();
+    }
 
-        GUILayout.Label("Status: " + PhotonNetwork.NetworkClientState); // Hiển thị trạng thái kết nối hiện tại
+    public override void OnCreateRoomFailed(short returnCode, string message)
+    {
+        SetActivePanel(SelectionPanel.name);
+    }
 
-        // Kiểm tra nếu đang kết nối, đang gia nhập phòng hoặc chưa kết nối lobby thì nút sẽ bị vô hiệu hóa
-        if (joiningRoom || !PhotonNetwork.IsConnected || PhotonNetwork.NetworkClientState != ClientState.JoinedLobby)
+    public override void OnJoinRoomFailed(short returnCode, string message)
+    {
+        SetActivePanel(SelectionPanel.name);
+
+    }
+
+    public override void OnJoinRandomFailed(short returnCode, string message)
+    {
+        string roomName = "Room " + Random.Range(1000, 10000);
+        RoomOptions option = new RoomOptions { MaxPlayers = 5 };
+        PhotonNetwork.CreateRoom(roomName, option, null);
+    }
+    public override void OnJoinedRoom()
+    {
+        cachedRoomList.Clear();
+        SetActivePanel(InsideRoomPanel.name);
+        if (playerListEntries == null)
         {
-            GUI.enabled = false;
+            playerListEntries = new Dictionary<int, GameObject>();
         }
 
-        GUILayout.FlexibleSpace(); // Thêm khoảng trống linh hoạt
-
-        // Cho phép nhập tên phòng và nút tạo phòng
-        roomName = GUILayout.TextField(roomName, GUILayout.Width(250)); // Hiển thị ô nhập tên phòng
-
-        if (GUILayout.Button("Create Room", GUILayout.Width(125))) // Nút tạo phòng
+        foreach (Player player in PhotonNetwork.PlayerList)
         {
-            if (roomName != "") // Kiểm tra nếu tên phòng trống thì không thực hiện tạo phòng
+            GameObject entry = Instantiate(PlayerListEntryPrefab);
+            entry.transform.SetParent(InsideRoomPanel.transform);
+            entry.transform.localScale = Vector3.one;
+            entry.GetComponent<PlayerListEntry>().Initialize(player.ActorNumber, player.NickName);
+
+            object isPlayerReady;
+            if (player.CustomProperties.TryGetValue("IsPlayerReady", out isPlayerReady))
             {
-                joiningRoom = true;
+                entry.GetComponent<PlayerListEntry>().SetPlayerReady((bool)isPlayerReady);
+            }
+            playerListEntries.Add(player.ActorNumber, entry);
+        }
+        StartGameButton.gameObject.SetActive(CheckPlayersReady());
+        Hashtable props = new Hashtable
+        {
+            {"PlayerLoadedLevel", false}
+        };
+        PhotonNetwork.LocalPlayer.SetCustomProperties(props);
+    }
 
-                RoomOptions roomOptions = new RoomOptions(); // Thiết lập các tùy chọn phòng
-                roomOptions.IsOpen = true; // Phòng mở (cho phép người khác tham gia)
-                roomOptions.IsVisible = true; // Phòng hiển thị trong danh sách
-                roomOptions.MaxPlayers = 5; // Số người chơi tối đa (có thể thay đổi)
+    public override void OnLeftRoom()
+    {
+        SetActivePanel(SelectionPanel.name);
+        foreach (GameObject entry in playerListEntries.Values)
+        {
+            Destroy(entry.gameObject);
+        }
 
-                PhotonNetwork.JoinOrCreateRoom(roomName, roomOptions, TypedLobby.Default); // Tạo hoặc tham gia phòng với tên đã nhập
+        playerListEntries.Clear();
+        playerListEntries = null;
+    }
+
+    public override void OnPlayerEnteredRoom(Player newPlayer)
+    {
+        GameObject entry = Instantiate(PlayerListEntryPrefab);
+        entry.transform.SetParent(InsideRoomPanel.transform);
+        entry.transform.localScale = Vector3.one;
+        entry.GetComponent<PlayerListEntry>().Initialize(newPlayer.ActorNumber, newPlayer.NickName);
+        playerListEntries.Add(newPlayer.ActorNumber, entry);
+        StartGameButton.gameObject.SetActive(CheckPlayersReady());
+    }
+
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        Destroy(playerListEntries[otherPlayer.ActorNumber].gameObject);
+        playerListEntries.Remove(otherPlayer.ActorNumber);
+        StartGameButton.gameObject.SetActive(CheckPlayersReady());
+    }
+
+    public override void OnMasterClientSwitched(Player newMasterClient)
+    {
+        if (PhotonNetwork.LocalPlayer.ActorNumber == newMasterClient.ActorNumber)
+        {
+            StartGameButton.gameObject.SetActive(CheckPlayersReady());
+        }
+    }
+
+    public override void OnPlayerPropertiesUpdate(Player targetPlayer, Hashtable changedProps)
+    {
+        if (playerListEntries == null)
+        {
+            playerListEntries = new Dictionary<int, GameObject>();
+        }
+
+        GameObject entry;
+        if (playerListEntries.TryGetValue(targetPlayer.ActorNumber, out entry))
+        {
+            object isPlayerReady;
+            if (changedProps.TryGetValue(AsteroidsGame.PLAYER_READY, out isPlayerReady))
+            {
+                entry.GetComponent<PlayerListEntry>().SetPlayerReady((bool)isPlayerReady);
             }
         }
 
-        GUILayout.EndHorizontal();
+        StartGameButton.gameObject.SetActive(CheckPlayersReady());
+    }
 
-        // Duyệt qua danh sách phòng có thể tham gia
-        roomListScroll = GUILayout.BeginScrollView(roomListScroll, true, true); // Khởi tạo thanh cuộn danh sách phòng
 
-        if (createdRooms.Count == 0) // Kiểm tra nếu không có phòng nào
+    #endregion
+
+
+
+
+    #region UI CALLBACKS
+
+    public void OnBackButton()
+    {
+        if (PhotonNetwork.InLobby)
         {
-            GUILayout.Label("There are currently no rooms available...");
+            PhotonNetwork.LeaveLobby();
+        }
+        SetActivePanel(SelectionPanel.name);
+    }
+
+    public void OnCreateRoomButton()
+    {
+        string roomName = RoomNameInput.text;
+        roomName = roomName.Equals(string.Empty) ? "Room" + Random.Range(1000, 10000) : roomName;
+        byte maxPlayers;
+        byte.TryParse(MaxplayerInput.text, out maxPlayers);
+        maxPlayers = (byte)Mathf.Clamp(maxPlayers, 2, 5);
+        RoomOptions options = new RoomOptions { MaxPlayers = maxPlayers, PlayerTtl = 10000 };
+        PhotonNetwork.CreateRoom(roomName, options, null);
+
+    }
+    public void OnJoinRandomRoomButton()
+    {
+        SetActivePanel(JoinRandomRoomPanel.name);
+
+        PhotonNetwork.JoinRandomRoom();
+    }
+
+    public void OnLeaveGameButton()
+    {
+        PhotonNetwork.LeaveRoom();
+    }
+
+    public void OnLoginButton()
+    {
+        string playerName = PlayerNameInput.text;
+        if (!playerName.Equals(""))
+        {
+            PhotonNetwork.LocalPlayer.NickName = playerName;
+            PhotonNetwork.ConnectUsingSettings();
         }
         else
         {
-            for (int i = 0; i < createdRooms.Count; i++) // Lặp qua từng phòng trong danh sách
-            {
-                GUILayout.BeginHorizontal("box"); // Khung nền cho mỗi phòng
-
-                GUILayout.Label(createdRooms[i].Name, GUILayout.Width(400)); // Hiển thị tên phòng
-                GUILayout.Label(createdRooms[i].PlayerCount + "/" + createdRooms[i].MaxPlayers); // Hiển thị số người chơi hiện tại/tối đa
-
-                GUILayout.FlexibleSpace(); // Thêm khoảng trống linh hoạt
-
-                if (GUILayout.Button("Join")) // Nút tham gia phòng
-                {
-                    joiningRoom = true;
-
-                    // Thiết lập tên người chơi
-                    PhotonNetwork.NickName = playerName;
-
-                    // Tham gia phòng với tên đã chọn
-                    PhotonNetwork.JoinRoom(createdRooms[i].Name);
-                }
-                GUILayout.EndHorizontal();
-            }
+            Debug.LogError("Player Name is invalid.");
         }
+    }
 
-        GUILayout.EndScrollView(); // Kết thúc thanh cuộn danh sách phòng
 
-        // Hiển thị ô nhập tên người chơi và nút làm mới danh sách phòng
-        GUILayout.BeginHorizontal();
-
-        GUILayout.Label("Tên người chơi: ", GUILayout.Width(85));
-        //Player name text field
-        playerName = GUILayout.TextField(playerName, GUILayout.Width(250)); // Hiển thị ô nhập tên người chơi
-
-        GUILayout.FlexibleSpace(); // Thêm khoảng trống linh hoạt
-
-        // Kiểm tra trạng thái kết nối và không đang gia nhập phòng thì nút làm mới mới hoạt động
-        GUI.enabled = (PhotonNetwork.NetworkClientState == ClientState.JoinedLobby || PhotonNetwork.NetworkClientState == ClientState.Disconnected) && !joiningRoom;
-        if (GUILayout.Button("Refresh", GUILayout.Width(100))) // Nút làm mới danh sách phòng
+    public void OnRoomListButton()
+    {
+        if (!PhotonNetwork.InLobby)
         {
-            if (PhotonNetwork.IsConnected) // Kiểm tra nếu đã kết nối
-            {
-                // Tham gia lại lobby để lấy danh sách phòng mới nhất
-                PhotonNetwork.JoinLobby(TypedLobby.Default);
-            }
-            else // Nếu chưa kết nối thì thiết lập kết nối mới
-            {
-                PhotonNetwork.ConnectUsingSettings();
-            }
+            PhotonNetwork.JoinLobby();
         }
 
-        GUILayout.EndHorizontal();
-
-        // Hiển thị thông báo "Đang kết nối..." khi đang trong quá trình gia nhập phòng
-        if (joiningRoom)
-        {
-            GUI.enabled = true; // Bật giao diện hiển thị thông báo
-            GUI.Label(new Rect(900 / 2 - 50, 400 / 2 - 10, 100, 20), "Is connecting..."); // Hiển thị thông báo
-        }
+        SetActivePanel(RoomListPanel.name);
     }
-
-    //OnCreateRoomFailed duoc goi khi tao phong that bai
-    public override void OnCreateRoomFailed(short returnCode, string message)
+    public void OnStartGameButton()
     {
-        Debug.Log($"Create room failed. Error code: {returnCode}. Notification: {message}. Maybe room is exits even if not displayed ");
-        joiningRoom = false;
-    }
+        PhotonNetwork.CurrentRoom.IsOpen = false;
+        PhotonNetwork.CurrentRoom.IsVisible = false;
 
-    //OnJoinRoomFailed duoc goi khi tham gia phong that bai
-    public override void OnJoinRoomFailed(short returnCode, string message)
-    {
-        Debug.Log($"Join room failed. Error code: {returnCode}. Notification: {message}. Maybe room is full, close or doesn't exits!");
-        joiningRoom = false;
-    }
-
-    //OncreatedRoom duoc goi khi tao phong thanh cong
-    public override void OnCreatedRoom()
-    {
-        Debug.Log("Created Room!");
-        PhotonNetwork.NickName = playerName;
         PhotonNetwork.LoadLevel("GameRoom");
     }
+    #endregion
 
-    //OnJoinedRoom duoc goi khi tham gia phong thanh cong
-    public override void OnJoinedRoom()
+    public void SetActivePanel(string activePanel)
     {
-        Debug.Log("Joined Room!");
+        LoginPanel.SetActive(activePanel.Equals(LoginPanel.name));
+        SelectionPanel.SetActive(activePanel.Equals(SelectionPanel.name));
+        CreateRoomPanel.SetActive(activePanel.Equals(CreateRoomPanel.name));
+        JoinRandomRoomPanel.SetActive(activePanel.Equals(JoinRandomRoomPanel.name));
+        RoomListPanel.SetActive(activePanel.Equals(RoomListPanel.name));    // UI should call OnRoomListButtonClicked() to activate this
+        InsideRoomPanel.SetActive(activePanel.Equals(InsideRoomPanel.name));
+
     }
+    private void ClearRoomListView()
+    {
+        foreach (GameObject entry in roomListEntries.Values)
+        {
+            Destroy(entry.gameObject);
+        }
+        roomListEntries.Clear();
+
+    }
+
+    private void UpdateCachedRoomList(List<RoomInfo> roomList)
+    {
+        foreach (RoomInfo info in roomList)
+        {
+            if (!info.IsOpen || !info.IsVisible || info.RemovedFromList)
+            {
+                if (cachedRoomList.ContainsKey(info.Name))
+                {
+                    cachedRoomList.Remove(info.Name);
+                }
+
+                continue;
+            }
+
+            if (cachedRoomList.ContainsKey(info.Name))
+            {
+                cachedRoomList[info.Name] = info;
+            }
+            // Add new room info to cache
+            else
+            {
+                cachedRoomList.Add(info.Name, info);
+            }
+        }
+
+    }
+
+    private void UpdateRoomListView()
+    {
+        foreach (RoomInfo info in cachedRoomList.Values)
+        {
+            GameObject entry = Instantiate(RoomListEntryPrefab);
+            entry.transform.SetParent(RoomListContent.transform);
+            entry.transform.localScale = Vector3.one;
+            entry.GetComponent<RoomListEntry>().Initialize(info.Name, (byte)info.PlayerCount, (byte)info.MaxPlayers);
+
+            roomListEntries.Add(info.Name, entry);
+        }
+    }
+
+    public void LocalPlayerPropertiesUpdated()
+    {
+        StartGameButton.gameObject.SetActive(CheckPlayersReady());
+
+    }
+
+    private bool CheckPlayersReady()
+    {
+        if (!PhotonNetwork.IsMasterClient)
+        {
+            return false;
+        }
+
+        foreach (Player player in PhotonNetwork.PlayerList)
+        {
+            object isPlayerReady;
+            if (player.CustomProperties.TryGetValue("IsPlayerReady", out isPlayerReady))
+            {
+                if (!(bool)isPlayerReady)
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
 }

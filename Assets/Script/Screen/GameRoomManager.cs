@@ -13,8 +13,10 @@ public class GameRoomManager : MonoBehaviourPunCallbacks
             UnityEngine.SceneManagement.SceneManager.LoadScene("GameLobby");
             return;
         }
+        GetPlayerPrefabs();
+    }
+    public void GetPlayerPrefabs(){
         int playerIndex = PhotonNetwork.LocalPlayer.ActorNumber - 1;
-
         Vector3 spawnPpoint = new Vector3(Random.Range(-18f, 18f), 0, 0);
         PhotonNetwork.Instantiate(PlayerPrefabs[playerIndex].name, spawnPpoint, spawnPosition[Random.Range(0, spawnPosition.Length - 1)].rotation, 0);
     }
