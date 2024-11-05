@@ -52,6 +52,7 @@ public class LobbyController : MonoBehaviourPunCallbacks
     #region PUN CALLBACKS
     public override void OnConnectedToMaster()
     {
+        PhotonNetwork.JoinLobby(TypedLobby.Default);
         this.SetActivePanel(SelectionPanel.name);
     }
 
@@ -106,7 +107,6 @@ public class LobbyController : MonoBehaviourPunCallbacks
             entry.transform.SetParent(InsideRoomPanel.transform);
             entry.transform.localScale = Vector3.one;
             entry.GetComponent<PlayerListEntry>().Initialize(player.ActorNumber, player.NickName);
-
             object isPlayerReady;
             if (player.CustomProperties.TryGetValue("IsPlayerReady", out isPlayerReady))
             {
@@ -199,7 +199,7 @@ public class LobbyController : MonoBehaviourPunCallbacks
     public void OnCreateRoomButton()
     {
         string roomName = RoomNameInput.text;
-        roomName = roomName.Equals(string.Empty) ? "Room" + Random.Range(1000, 10000) : roomName;
+        roomName = (roomName.Equals(string.Empty)) ? "Room" + Random.Range(1000, 10000) : roomName;
         byte maxPlayers;
         byte.TryParse(MaxplayerInput.text, out maxPlayers);
         maxPlayers = (byte)Mathf.Clamp(maxPlayers, 2, 5);

@@ -20,10 +20,10 @@ public class PlayerListEntry : MonoBehaviourPunCallbacks
 
         #region UNITY
 
-        // public override void OnEnable()
-        // {
-        //     PlayerNumbering.OnPlayerNumberingChanged += OnPlayerNumberingChanged;
-        // }
+        public override void OnEnable()
+        {
+            PlayerNumbering.OnPlayerNumberingChanged += OnPlayerNumberingChanged;
+        }
 
         public void Start()
         {
@@ -53,10 +53,10 @@ public class PlayerListEntry : MonoBehaviourPunCallbacks
             }
         }
 
-        // public override void OnDisable()
-        // {
-        //     PlayerNumbering.OnPlayerNumberingChanged -= OnPlayerNumberingChanged;
-        // }
+        public override void OnDisable()
+        {
+            PlayerNumbering.OnPlayerNumberingChanged -= OnPlayerNumberingChanged;
+        }
 
         #endregion
 
@@ -88,9 +88,9 @@ public class PlayerListEntry : MonoBehaviourPunCallbacks
         {
             switch (colorChoice)
             {
-                case 0: return Color.red;
+                case 0: return Color.blue;
                 case 1: return Color.green;
-                case 2: return Color.blue;
+                case 2: return Color.red;
                 case 3: return Color.yellow;
                 case 4: return Color.cyan;
                 case 5: return Color.grey;

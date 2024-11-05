@@ -363,6 +363,8 @@ MonoBehaviour:
   - {fileID: 3565058332161462825}
   localObjects:
   - {fileID: 8418446645824200005}
+  - {fileID: 482587417726597126}
+  - {fileID: 8500200566590877908}
 --- !u!114 &8691864884554053604
 MonoBehaviour:
   m_ObjectHideFlags: 0
