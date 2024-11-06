@@ -4,8 +4,6 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.UI;
 using ExitGames.Client.Photon;
-using Photon.Pun.Demo.Asteroids;
-
 public class LobbyController : MonoBehaviourPunCallbacks
 {
 
@@ -170,7 +168,7 @@ public class LobbyController : MonoBehaviourPunCallbacks
         if (playerListEntries.TryGetValue(targetPlayer.ActorNumber, out entry))
         {
             object isPlayerReady;
-            if (changedProps.TryGetValue(AsteroidsGame.PLAYER_READY, out isPlayerReady))
+            if (changedProps.TryGetValue("IsPlayerReady", out isPlayerReady))
             {
                 entry.GetComponent<PlayerListEntry>().SetPlayerReady((bool)isPlayerReady);
             }

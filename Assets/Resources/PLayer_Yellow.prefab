@@ -264,6 +264,7 @@ GameObject:
   - component: {fileID: 5636632596970203315}
   - component: {fileID: -4780348874894266530}
   - component: {fileID: 7888184550758672509}
+  - component: {fileID: 7552916673038084769}
   m_Layer: 0
   m_Name: PLayer_Yellow
   m_TagString: Player
@@ -489,12 +490,29 @@ MonoBehaviour:
   prefixField: -1
   Synchronization: 3
   OwnershipTransfer: 0
-  observableSearch: 2
+  observableSearch: 0
   ObservedComponents:
   - {fileID: -4780348874894266530}
+  - {fileID: 7552916673038084769}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &7552916673038084769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2623363061801194109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e7cb724808c322458aa4d15f5035fa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizeVelocity: 1
+  m_SynchronizeAngularVelocity: 1
+  m_TeleportEnabled: 1
+  m_TeleportIfDistanceGreaterThan: 3
 --- !u!1 &3581491634048618714
 GameObject:
   m_ObjectHideFlags: 0
