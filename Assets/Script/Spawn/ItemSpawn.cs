@@ -1,23 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 
-public enum ItemType
-{
-    Item_1,
-    Item_2,
-    Item_3,
-    Item_4,
-    Item_5,
 
-}
-public class ItemSpawn : MonoBehaviour
+public class ItemSpawn : MonoBehaviourPun
 {
     [SerializeField] float appearTime = 7f;
-    [SerializeField] ItemType itemType;
+    [SerializeField] GameObject[] ItemsPrefabs;
     void Start()
     {
-        StartCoroutine(ItemSpawnTime());
+        if (PhotonNetwork.IsMasterClient)
+        {
+            StartCoroutine(ItemSpawnTime());
+        }
     }
 
     IEnumerator ItemSpawnTime()
@@ -26,34 +22,16 @@ public class ItemSpawn : MonoBehaviour
         {
             yield return new WaitForSeconds(appearTime);
             ItemSpawner();
-
         }
     }
 
     void ItemSpawner()
     {
         float randomX = Random.Range(-20f, 20f);
-        int randomItem = Random.Range(1, 6);
+        int randomItem = Random.Range(0, 5);
         Vector3 itemSpawner = new Vector3(randomX, 0.3f, 0f);
+        GameObject item = PhotonNetwork.Instantiate(ItemsPrefabs[randomItem].name, itemSpawner, Quaternion.identity);
+        item.name = ItemsPrefabs[randomItem].name;
 
-        switch (randomItem)
-        {
-            case 1:
-                itemType = ItemType.Item_1;
-                break;
-            case 2:
-                itemType = ItemType.Item_2;
-                break;
-            case 3:
-                itemType = ItemType.Item_3;
-                break;
-            case 4:
-                itemType = ItemType.Item_4;
-                break;
-            case 5:
-                itemType = ItemType.Item_5;
-                break;
-        }
-        ItemPool.SingletonItemPool.GetItem(itemType, itemSpawner, Quaternion.identity);
     }
 }

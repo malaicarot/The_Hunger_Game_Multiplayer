@@ -14,6 +14,7 @@ public class Controller : MonoBehaviour
     Transform hand;
 
     Rigidbody2D rb;
+    public Rigidbody2D Rb {get;}
     Animator animator;
     bool isMoving = false;
     bool isGrounded = true;
@@ -57,12 +58,9 @@ public class Controller : MonoBehaviour
         if (moveInput.x > 0)
         {
             transform.rotation = Quaternion.Euler(0, 180, 0);
-                        // transform.rotation = playerRotation / ;
-
         }
         else if (moveInput.x < 0)
         {
-            // transform.rotation = Quaternion.Euler(0, 0, 0);
             transform.rotation = playerRotation;
         }
         /***************************************************/

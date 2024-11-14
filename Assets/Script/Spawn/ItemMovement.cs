@@ -1,7 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
-using UnityEngine.Pool;
 
 public enum WeaponType
 {
@@ -11,10 +10,10 @@ public enum WeaponType
     Shotgun,
     Bomb
 }
-[RequireComponent(typeof(PooledObject))]
-public class ItemMovement : PooledObject
+
+public class ItemMovement : MonoBehaviourPunCallbacks
 {
-    float itemDuration = 6f;
+    [SerializeField] float itemDuration = 6f;
     float amplitude = 0.5f;
     float frequency = 2f;
     WeaponType weaponType;
@@ -29,29 +28,61 @@ public class ItemMovement : PooledObject
         StartCoroutine(ReturnItems());
     }
 
+    IEnumerator ReturnItems()
+    {
+        yield return new WaitForSeconds(itemDuration);
+        PhotonNetwork.Destroy(gameObject);
+    }
+
     void Update()
     {
         // Tao chuyen dong cho items
-        float newY = Mathf.Sin(Time.time * frequency) * amplitude;
-        transform.position = new Vector2(startPosition.x, startPosition.y + newY);
+        if (PhotonNetwork.IsMasterClient)
+        {
+            float newY = Mathf.Sin(Time.time * frequency) * amplitude;
+            transform.position = new Vector2(startPosition.x, startPosition.y + newY);
+        }
+
     }
 
-    IEnumerator ReturnItems()
+    public void GetItems(GameObject item, GameObject player, WeaponType _weaponType)
     {
-        while (true)
+        photonView.RPC("RPC_GetItems", RpcTarget.AllBuffered, item.GetPhotonView().ViewID, player.GetPhotonView().ViewID, _weaponType);
+
+    }
+
+    [PunRPC]
+    void RPC_GetItems(int itemId, int playerId, WeaponType _weaponType)
+    {
+        PhotonView itemPhotonView = PhotonView.Find(itemId);
+        PhotonView playerPhotonView = PhotonView.Find(playerId);
+
+        if (itemPhotonView != null && itemPhotonView.gameObject != null)
         {
-            yield return new WaitForSeconds(itemDuration);
-            Release();
+            if (itemPhotonView.Owner == PhotonNetwork.LocalPlayer || PhotonNetwork.IsMasterClient)
+            {
+                PhotonNetwork.Destroy(itemPhotonView.gameObject);
+            }
+            else
+            {
+                itemPhotonView.TransferOwnership(PhotonNetwork.MasterClient);
+                // PhotonNetwork.Destroy(itemPhotonView.gameObject);
+            }
+        }
+
+        if (playerPhotonView != null && playerPhotonView.gameObject != null)
+        {
+            Transform hand = playerPhotonView.gameObject.transform.Find("Hand");
+            weapon.EquipWeapon(_weaponType, hand);
         }
     }
+
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Transform hand = other.transform.Find("Hand");
             string name = gameObject.name.ToString();
-            Release();
             switch (name)
             {
                 case "Item_1":
@@ -70,15 +101,12 @@ public class ItemMovement : PooledObject
                     weaponType = WeaponType.Shotgun;
                     break;
             }
-            if (weaponType != WeaponType.Bomb)
-            {
-                weapon.EquipWeapon(weaponType, hand);
-            }
-            else
-            {
-                BombController bombBag = FindObjectOfType<BombController>();
-                bombBag.bombQuantity = 5;
-            }
+            // if (weaponType != WeaponType.Bomb)
+            // {
+                GetItems(this.gameObject, other.gameObject, weaponType);
+
+                
+            // }
         }
     }
 }

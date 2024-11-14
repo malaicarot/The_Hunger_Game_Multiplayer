@@ -12,12 +12,17 @@ public class ItemPool : ObjectPool
         
     }
 
-    public ItemMovement GetItem(ItemType ItemType, Vector3 position, Quaternion quaternion){
-        PooledObject objOfPool = SingletonItemPool.GetPooledObject(ItemType.ToString());
-        ItemMovement Item = objOfPool.GetComponent<ItemMovement>();
-        Item.transform.position = position;
-        Item.transform.rotation = quaternion;
-        return Item;
+    // public ItemMovement GetItem(ItemType ItemType, Vector3 position, Quaternion quaternion){
+    //     GameObject objOfPool = SingletonItemPool.GetPooledObject(ItemType.ToString());
+    //     ItemMovement Item = objOfPool.GetComponent<ItemMovement>();
+    //     Item.transform.position = position;
+    //     Item.transform.rotation = quaternion;
+    //     return Item;
+    // }
+
+    public override void ReturnToPool(GameObject pooledObject)
+    {
+        base.ReturnToPool(pooledObject);
     }
 
 }

@@ -40,6 +40,7 @@ MonoBehaviour:
   - Fire
   - RespawnSpaceship
   - GetPlayerPrefabs
+  - RPC_GetItems
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 0

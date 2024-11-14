@@ -11,12 +11,16 @@ public class ExplosionPool : ObjectPool
     }
 
     public Explode Explode(string explode, Vector3 position, Quaternion quaternion){
-        PooledObject objOfPool = SingletonExplosionPool.GetPooledObject(explode);
+        GameObject objOfPool = SingletonExplosionPool.GetPooledObject(explode);
         Explode explosion = objOfPool.GetComponent<Explode>();
         explosion.transform.position = position;
         explosion.transform.rotation = quaternion;
         return explosion;
 
+    }
+    public override void ReturnToPool(GameObject pooledObject)
+    {
+        base.ReturnToPool(pooledObject);
     }
 
 

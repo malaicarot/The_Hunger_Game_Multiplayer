@@ -9,7 +9,7 @@ public class PooledObject : MonoBehaviour
 
     public void Release(){
         if(_pool != null){
-            _pool.ReturnToPool(this);
+            // _pool.ReturnToPool(this);
         }
     }
   

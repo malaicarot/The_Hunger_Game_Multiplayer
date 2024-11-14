@@ -1,3 +1,4 @@
+using System.Collections;
 using Photon.Pun;
 using UnityEngine;
 
@@ -15,11 +16,15 @@ public class GameRoomManager : MonoBehaviourPunCallbacks
         }
         GetPlayerPrefabs();
     }
-    public void GetPlayerPrefabs(){
+    public void GetPlayerPrefabs()
+    {
         int playerIndex = PhotonNetwork.LocalPlayer.ActorNumber - 1;
         Vector3 spawnPpoint = new Vector3(Random.Range(-18f, 18f), 0, 0);
-        PhotonNetwork.Instantiate(PlayerPrefabs[playerIndex].name, spawnPpoint, spawnPosition[Random.Range(0, spawnPosition.Length - 1)].rotation, 0);
+        GameObject player = PhotonNetwork.Instantiate(PlayerPrefabs[playerIndex].name, spawnPpoint, transform.rotation, 0);
+        player.name = PlayerPrefabs[playerIndex].name;
     }
+
+    
 
     void OnGUI()
     {

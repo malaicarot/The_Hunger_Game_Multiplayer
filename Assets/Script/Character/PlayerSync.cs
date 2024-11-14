@@ -30,8 +30,12 @@ public class PlayerSync : MonoBehaviourPun, IPunObservable
 
     void Start()
     {
-        playerRb = GetComponent<Rigidbody2D>(); // Lấy thành phần Rigidbody của đối tượng
+        // var controller = localScripts[0] as Controller;
+        // playerRb = controller.Rb ; 
+
+        playerRb = GetComponent<Rigidbody2D>();
         // playerRb.isKinematic = !photonView.IsMine; // Nếu không phải của người chơi cục bộ, đặt kinematic để không bị ảnh hưởng bởi vật lý
+        Debug.Log($"Player rb: {gameObject.name} - {playerRb}");
 
 
         for (int i = 0; i < localScripts.Length; i++)
@@ -81,11 +85,8 @@ public class PlayerSync : MonoBehaviourPun, IPunObservable
             latestAngularVelocity = (float)stream.ReceiveNext();
 
             currentTime = 0.0f;
-            Debug.Log($"currentTime: {currentTime}");
             lastPacketTime = currentPacketTime;
-            Debug.Log($"lastPacketTime: {lastPacketTime}");
             currentPacketTime = info.SentServerTime;
-            Debug.Log($"currentPacketTime: {currentPacketTime}");
             positionAtLastPacket = transform.position;
             rotationAtLastPacket = transform.rotation;
             velocityAtLastPacket = playerRb.velocity;

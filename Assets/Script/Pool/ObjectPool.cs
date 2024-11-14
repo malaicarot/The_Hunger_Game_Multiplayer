@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Pool;
 using UnityEngine.UIElements;
 
-public class ObjectPool : MonoBehaviour
+public class ObjectPool : MonoBehaviourPun
 {
     [Range(10, 100)][SerializeField] private int poolSize;
-    [SerializeField] private List<PooledObject> objectToPool;
-    private Dictionary<string, Stack<PooledObject>> poolDictionary;
+    [SerializeField] private List<GameObject> objectToPool;
+    private Dictionary<string, Stack<GameObject>> poolDictionary;
     void Start()
     {
         SetupPool();
@@ -22,16 +23,16 @@ public class ObjectPool : MonoBehaviour
         {
             return;
         }
-        poolDictionary = new Dictionary<string, Stack<PooledObject>>();
+        poolDictionary = new Dictionary<string, Stack<GameObject>>();
         //Duyet qua List Object
         foreach (var obj in objectToPool)
         {
-            Stack<PooledObject> objStack = new Stack<PooledObject>();
+            Stack<GameObject> objStack = new Stack<GameObject>();
             for (int i = 0; i < poolSize; i++)
             {
                 //Sinh ra so luong obj dua tren poolSize
-                PooledObject instance = Instantiate(obj);
-                instance._pool = this;
+                GameObject instance = PhotonNetwork.Instantiate(obj.name, transform.position, transform.rotation, 0);
+                // instance._pool = this;
                 instance.gameObject.name = obj.name;
                 instance.gameObject.SetActive(false);
                 objStack.Push(instance);
@@ -40,7 +41,7 @@ public class ObjectPool : MonoBehaviour
         }
     }
 
-    public PooledObject GetPooledObject(string objType)
+    public GameObject GetPooledObject(string objType)
     {
         if (string.IsNullOrEmpty(objType) || !poolDictionary.ContainsKey(objType))
         {
@@ -51,20 +52,20 @@ public class ObjectPool : MonoBehaviour
 
         if (poolDictionary[objType].Count == 0)
         {
-            PooledObject newInstance = Instantiate(objectToPool.Find(obj => obj.name == objType));
+            GameObject newInstance = PhotonNetwork.Instantiate(objectToPool.Find(obj => obj.name == objType)?.name, transform.position, transform.rotation, 0);            
             newInstance.gameObject.name = objType;
-            newInstance._pool = this;
+            // newInstance._pool = this;
             return newInstance;
         }
 
         // Lay Obj o dau Stack
-        PooledObject nextInstance = poolDictionary[objType].Pop();
+        GameObject nextInstance = poolDictionary[objType].Pop();
         nextInstance.gameObject.SetActive(true);
         return nextInstance;
 
     }
 
-    public void ReturnToPool(PooledObject pooledObject)
+    public virtual void ReturnToPool(GameObject pooledObject)
     {
         if (pooledObject == null)
         {
@@ -75,7 +76,7 @@ public class ObjectPool : MonoBehaviour
         if (!poolDictionary.ContainsKey(pooledObject.name))
         {
             Debug.Log(pooledObject.name);
-            Destroy(pooledObject.gameObject);
+            PhotonNetwork.Destroy(pooledObject.gameObject);
 
         }
         else

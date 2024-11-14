@@ -14,10 +14,15 @@ public class WeaponPool : ObjectPool
 
     public Shooting CreateWeapon(WeaponType weaponType, Vector3 position, Quaternion quaternion)
     {
-        PooledObject objOfPool = SingletonWeaponPool.GetPooledObject(weaponType.ToString());
+        GameObject objOfPool = SingletonWeaponPool.GetPooledObject(weaponType.ToString());
         Shooting weapon = objOfPool.GetComponent<Shooting>();
         weapon.transform.position = position;
         weapon.transform.rotation = quaternion;
         return weapon;
+    }
+
+    public override void ReturnToPool(GameObject pooledObject)
+    {
+        base.ReturnToPool(pooledObject);
     }
 }
