@@ -30,22 +30,19 @@ public class PlayerSync : MonoBehaviourPun, IPunObservable
 
     void Start()
     {
-        // var controller = localScripts[0] as Controller;
-        // playerRb = controller.Rb ; 
 
         playerRb = GetComponent<Rigidbody2D>();
         // playerRb.isKinematic = !photonView.IsMine; // Nếu không phải của người chơi cục bộ, đặt kinematic để không bị ảnh hưởng bởi vật lý
-        Debug.Log($"Player rb: {gameObject.name} - {playerRb}");
 
 
         for (int i = 0; i < localScripts.Length; i++)
         {
-            localScripts[i].enabled = photonView.IsMine; // Kích hoạt script nếu là của người chơi cục bộ
+            localScripts[i].enabled = photonView.IsMine; 
         }
 
         for (int i = 0; i < localObjects.Length; i++)
         {
-            localObjects[i].SetActive(photonView.IsMine); // Kích hoạt đối tượng nếu là của người chơi cục bộ
+            localObjects[i].SetActive(photonView.IsMine); 
         }
     }
 
@@ -54,13 +51,8 @@ public class PlayerSync : MonoBehaviourPun, IPunObservable
         if (!photonView.IsMine)
         {
             double timeToReachGoal = currentPacketTime - lastPacketTime;
-            Debug.Log($"timeToReachGoal: {timeToReachGoal}");
             currentTime += Time.deltaTime;
-            Debug.Log($"currentTime: {currentTime}");
 
-            // if(timeToReachGoal == 0){
-            //     return;
-            // }
             transform.position = Vector3.Lerp(positionAtLastPacket, latestPos, (float)(currentTime / timeToReachGoal));
             transform.rotation = Quaternion.Lerp(rotationAtLastPacket, latestRot, (float)(currentTime / timeToReachGoal));
             playerRb.velocity = Vector2.Lerp(velocityAtLastPacket, latestVelocity, (float)(currentTime / timeToReachGoal));
@@ -93,6 +85,4 @@ public class PlayerSync : MonoBehaviourPun, IPunObservable
             angularVelocityAtLastPacket = playerRb.angularVelocity;
         }
     }
-
-
 }

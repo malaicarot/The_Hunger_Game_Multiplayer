@@ -32,6 +32,5 @@ public class ItemSpawn : MonoBehaviourPun
         Vector3 itemSpawner = new Vector3(randomX, 0.3f, 0f);
         GameObject item = PhotonNetwork.Instantiate(ItemsPrefabs[randomItem].name, itemSpawner, Quaternion.identity);
         item.name = ItemsPrefabs[randomItem].name;
-
     }
 }

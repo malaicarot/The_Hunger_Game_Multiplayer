@@ -24,7 +24,11 @@ public class Shooting : MonoBehaviourPunCallbacks
 
     void Start()
     {
-        StartWeaponCoroutine();
+        if (gameObject.name.ToString() != "Bomb")
+        {
+            StartWeaponCoroutine();
+        }
+
     }
     void Update()
     {
@@ -36,17 +40,20 @@ public class Shooting : MonoBehaviourPunCallbacks
         if (gameObject.name.ToString() != "Bomb")
         {
             float fire = Input.GetAxis("Fire1");
-            if (Input.GetButtonDown("Fire1") && fire != 0)
+            if (photonView.IsMine && Input.GetButtonDown("Fire1") && fire != 0)
             {
                 Shoot();
             }
         }
         else
         {
-            StartCoroutine(Explosion());
+            if (photonView.IsMine)
+            {
+                StartCoroutine(Explosion());
+            }
         }
-
     }
+    
 
     IEnumerator Explosion()
     {
@@ -62,8 +69,6 @@ public class Shooting : MonoBehaviourPunCallbacks
             StopCoroutine(weaponExitsCoroutine);
         }
         weaponExitsCoroutine = StartCoroutine(timeExitsWeapon());
-
-
     }
 
     IEnumerator timeExitsWeapon()
@@ -80,6 +85,29 @@ public class Shooting : MonoBehaviourPunCallbacks
     public void DestroyWeapon()
     {
         PhotonNetwork.Destroy(gameObject);
+    }
+
+
+    void GetBullet(GameObject weapon, BulletType bulletType)
+    {
+        photonView.RPC("RPC_GetBullet", RpcTarget.AllBuffered, weapon.GetPhotonView().ViewID, bulletType);
+    }
+
+    [PunRPC]
+    void RPC_GetBullet(int weaponId, BulletType _bulletType)
+    {
+        PhotonView weaponPhotonView = PhotonView.Find(weaponId);
+        if (weaponPhotonView != null && weaponPhotonView.gameObject != null)
+        {
+            if (weaponPhotonView.Owner == PhotonNetwork.LocalPlayer || PhotonNetwork.IsMasterClient)
+            {
+                GameObject bullet = PhotonNetwork.Instantiate(type.ToString(), firePoint.position, Quaternion.identity);
+                if (bullet != null)
+                {
+                    bullet.name = type.ToString();
+                }
+            }
+        }
     }
 
     void Shoot()
@@ -99,11 +127,6 @@ public class Shooting : MonoBehaviourPunCallbacks
                 type = BulletType.Bullet_Shotgun;
                 break;
         }
-
-        GameObject bullet = PhotonNetwork.Instantiate(type.ToString(), firePoint.position, Quaternion.identity);
-        if (bullet != null)
-        {
-            bullet.name = type.ToString();
-        }
+        GetBullet(this.gameObject, type);
     }
 }

@@ -7,7 +7,6 @@ public class WeaponSpawn : MonoBehaviourPunCallbacks
 {
     GameObject currentWeapon;
     string currentWeaponType;
-
     Shooting weapon;
 
     BombController bombController;
@@ -15,7 +14,6 @@ public class WeaponSpawn : MonoBehaviourPunCallbacks
     void Start()
     {
         bombController = FindObjectOfType<BombController>();
-
     }
 
     void Update()
@@ -37,11 +35,8 @@ public class WeaponSpawn : MonoBehaviourPunCallbacks
     {
         if (weaponType != WeaponType.Bomb)
         {
-            Debug.Log($"Weapon Params: {weaponType}");
-
             if (currentWeapon != null && currentWeaponType == weaponType.ToString())
             {
-                Debug.Log($"Same weapon: {currentWeaponType} = {weaponType}");
                 if (weapon != null)
                 {
                     weapon.ResetCourtine();
@@ -51,7 +46,6 @@ public class WeaponSpawn : MonoBehaviourPunCallbacks
             {
                 if (currentWeapon != null && currentWeaponType != weaponType.ToString())
                 {
-                    Debug.Log($"Diferrence weapon: {currentWeaponType} != {weaponType}");
                     DestroyWeapon();
                 }
                 SpawnWeapon(weaponType.ToString(), targerPosition);
@@ -60,14 +54,12 @@ public class WeaponSpawn : MonoBehaviourPunCallbacks
         else
         {
             bombController.bombQuantity = 5;
-
         }
     }
 
     void SpawnWeapon(string type, Transform target)
     {
         GameObject weapon = PhotonNetwork.Instantiate(type, target.position, Quaternion.identity);
-        Debug.Log($"weapon: {weapon}");
         weapon.name = type;
         currentWeapon = weapon;
         currentWeaponType = type;

@@ -41,6 +41,8 @@ MonoBehaviour:
   - RespawnSpaceship
   - GetPlayerPrefabs
   - RPC_GetItems
+  - RPC_ThrowBomb
+  - RPC_GetBullet
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 0

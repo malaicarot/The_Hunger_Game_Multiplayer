@@ -24,7 +24,6 @@ public class BulletShooter : MonoBehaviourPun
         if (rb != null)
         {
             rb.velocity = direction * speed;
-
         }
         else
         {
