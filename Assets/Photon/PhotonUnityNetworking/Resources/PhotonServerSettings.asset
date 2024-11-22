@@ -47,6 +47,8 @@ MonoBehaviour:
   - EquipWeapon
   - SpawnWeapon
   - RPC_SpawnWeapon
+  - InitializeBullet
+  - RPC_DestroyBullet
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 0

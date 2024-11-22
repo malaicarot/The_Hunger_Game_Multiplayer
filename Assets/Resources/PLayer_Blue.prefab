@@ -326,6 +326,7 @@ MonoBehaviour:
   - {fileID: 1570335359649092007, guid: 9d7dee397430af449b52e4bde9438beb, type: 3}
   - {fileID: 1841226223972534045, guid: e534db0a18c3b13459cfb2b9d7ba88b6, type: 3}
   firePoint: {fileID: 6248560887539960321}
+  PlayerRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &4366937297939023201
 MonoBehaviour:
   m_ObjectHideFlags: 0

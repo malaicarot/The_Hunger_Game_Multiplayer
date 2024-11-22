@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
 
@@ -9,20 +6,19 @@ public class Controller : MonoBehaviour
     [SerializeField] float speed = 6f;
     [SerializeField] float jumpForce = 6f;
     [SerializeField] float fallSpeed = -10f;
-
     [SerializeField] float checkDistance = 1f;
     [SerializeField] LayerMask groundMask;
 
 
     [SerializeField] GameObject[] WeaponPrefabs;
     [SerializeField] GameObject[] BulletPrefab;
-
     [SerializeField] Transform firePoint;
-    public Transform _FirePoint{
-        get{return firePoint;}
+    public Transform _FirePoint
+    {
+        get { return firePoint; }
     }
 
-
+    public Vector3 PlayerRotation;
 
     Rigidbody2D rb;
     public Rigidbody2D Rb { get; }
@@ -42,8 +38,8 @@ public class Controller : MonoBehaviour
     PhotonView photonView;
     Shooting myGun;
 
-
     /***************************/
+
     WeaponType weaponType;
     GameObject currentWeapon;
     string currentWeaponType;
@@ -56,14 +52,14 @@ public class Controller : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         map = FindObjectOfType<MapController>();
-
     }
 
     void Update()
     {
         if (photonView.IsMine)
         {
-            if(myGun == null){
+            if (myGun == null)
+            {
                 myGun = FindObjectOfType<Shooting>();
             }
 
@@ -83,10 +79,12 @@ public class Controller : MonoBehaviour
             if (moveInput.x > 0)
             {
                 transform.rotation = Quaternion.Euler(0, 180, 0);
+                PlayerRotation = Vector2.right;
             }
             else if (moveInput.x < 0)
             {
                 transform.rotation = playerRotation;
+                PlayerRotation = Vector2.left;
             }
             /***************************************************/
             if (jumpInput != 0 && isGrounded)
@@ -94,15 +92,13 @@ public class Controller : MonoBehaviour
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             }
 
-            float fire = Input.GetAxis("Fire1");
-            if (Input.GetButtonDown("Fire1") && fire != 0 && myGun != null)
+            if (Input.GetButtonDown("Fire1") && myGun != null)
             {
                 // myGun.Shoot(myGun.gunType);
-                // Transform muzzle = gameObject.transform.Find("Muzzle");
-                photonView.RPC("RPC_GetBullet", RpcTarget.All, myGun.gunType, _FirePoint.gameObject.GetComponent<PhotonView>().ViewID);
+                Vector3 muzzle = firePoint.position;
+                photonView.RPC("RPC_GetBullet", RpcTarget.All, myGun.gunType, muzzle, PlayerRotation * speed);
             }
         }
-
     }
 
     void GroundChecking()
@@ -232,12 +228,9 @@ public class Controller : MonoBehaviour
         weapon.transform.localRotation = Quaternion.identity;
     }
 
-
     [PunRPC]
-    void RPC_GetBullet(string type, int muzzleID){
-        PhotonView muzzlePhotonView = PhotonView.Find(muzzleID);
-        if(muzzlePhotonView != null && muzzlePhotonView.gameObject != null){
-            Instantiate(BulletPrefab[0], muzzlePhotonView.transform.position, Quaternion.identity);
-        }
+    void RPC_GetBullet(string type, Vector3 position, Vector3 velocity)
+    {
+        PhotonNetwork.Instantiate(BulletPrefab[0].name, position, Quaternion.identity).GetComponent<Rigidbody2D>().velocity = velocity;
     }
 }
