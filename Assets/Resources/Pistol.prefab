@@ -102,6 +102,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 4817122370662195028}
   timeExits: 10
+  BulletPrefab: {fileID: 1570335359649092007, guid: 6450e63ba64acab4dbfbd36c47d482ad, type: 3}
+  gunType: Pistol
 --- !u!114 &6076172968352926019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,7 +120,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 0
   ObservedComponents:
   - {fileID: 6563690892520138893}

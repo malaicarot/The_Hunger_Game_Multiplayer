@@ -1,5 +1,6 @@
 using System.Collections;
 using Photon.Pun;
+using Photon.Realtime;
 using UnityEngine;
 
 public enum WeaponType
@@ -18,7 +19,8 @@ public class ItemController : MonoBehaviourPun
     float frequency = 2f;
     Vector3 startPosition;
 
-    WeaponType weaponType;
+    public string ItemType;
+
 
     void Start()
     {
@@ -44,5 +46,4 @@ public class ItemController : MonoBehaviourPun
             transform.position = new Vector2(startPosition.x, startPosition.y + newY);
         }
     }
-
 }

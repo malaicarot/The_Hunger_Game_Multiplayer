@@ -28,21 +28,21 @@ public class PlayerSync : MonoBehaviourPun, IPunObservable
     Vector2 velocityAtLastPacket = Vector2.zero;           // Van toc tai thoi diem goi tin cuoi cung duoc nhan
     float angularVelocityAtLastPacket = 0.0f;                  // Van toc goc tai thoi diem goi tin cuoi cung duoc nhan
 
+    void Awake()
+    {
+        playerRb = GetComponent<Rigidbody2D>();
+    }
     void Start()
     {
-
-        playerRb = GetComponent<Rigidbody2D>();
-        // playerRb.isKinematic = !photonView.IsMine; // Nếu không phải của người chơi cục bộ, đặt kinematic để không bị ảnh hưởng bởi vật lý
-
-
+        // playerRb.isKinematic = !photonView.IsMine;
         for (int i = 0; i < localScripts.Length; i++)
         {
-            localScripts[i].enabled = photonView.IsMine; 
+            localScripts[i].enabled = photonView.IsMine;
         }
 
         for (int i = 0; i < localObjects.Length; i++)
         {
-            localObjects[i].SetActive(photonView.IsMine); 
+            localObjects[i].SetActive(photonView.IsMine);
         }
     }
 
@@ -85,4 +85,5 @@ public class PlayerSync : MonoBehaviourPun, IPunObservable
             angularVelocityAtLastPacket = playerRb.angularVelocity;
         }
     }
+
 }

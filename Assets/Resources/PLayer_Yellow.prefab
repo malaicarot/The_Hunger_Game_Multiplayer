@@ -102,7 +102,6 @@ GameObject:
   - component: {fileID: 2453485237066486051}
   - component: {fileID: 233890546418637801}
   - component: {fileID: 5944666342946697309}
-  - component: {fileID: 8537417968842062436}
   m_Layer: 0
   m_Name: PLayer_Yellow
   m_TagString: Player
@@ -373,18 +372,6 @@ MonoBehaviour:
   m_SynchronizeLayers:
   - SynchronizeType: 2
     LayerIndex: 0
---- !u!114 &8537417968842062436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5338826733439981186}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8139f82515017b4aa7bcbca7a6be9de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7124485393740764569
 GameObject:
   m_ObjectHideFlags: 0

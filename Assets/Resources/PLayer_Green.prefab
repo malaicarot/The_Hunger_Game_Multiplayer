@@ -117,6 +117,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3753927684413929966}
   - component: {fileID: 4487180699432834356}
+  - component: {fileID: 5220713078907158621}
+  - component: {fileID: 5746503958319661641}
   m_Layer: 0
   m_Name: Hand
   m_TagString: Untagged
@@ -191,6 +193,41 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5220713078907158621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403296706680085666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a61df223bf919b41a75ee7f7c5f7398, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5746503958319661641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403296706680085666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 2
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 5220713078907158621}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1134067818421794655
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,7 +246,6 @@ GameObject:
   - component: {fileID: 8609060182977948087}
   - component: {fileID: 8106765375136266267}
   - component: {fileID: -7285364914364370869}
-  - component: {fileID: 5072131430222739958}
   - component: {fileID: 8319786497718858179}
   m_Layer: 0
   m_Name: PLayer_Green
@@ -415,7 +451,6 @@ MonoBehaviour:
   - {fileID: 611638539840830364}
   localObjects:
   - {fileID: 129997896962122232}
-  - {fileID: 403296706680085666}
 --- !u!114 &8609060182977948087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -481,18 +516,6 @@ MonoBehaviour:
   m_SynchronizeLayers:
   - SynchronizeType: 2
     LayerIndex: 0
---- !u!114 &5072131430222739958
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1134067818421794655}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8139f82515017b4aa7bcbca7a6be9de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8319786497718858179
 MonoBehaviour:
   m_ObjectHideFlags: 0

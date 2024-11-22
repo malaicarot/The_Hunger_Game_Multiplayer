@@ -43,6 +43,10 @@ MonoBehaviour:
   - RPC_GetItems
   - RPC_ThrowBomb
   - RPC_GetBullet
+  - RPC_DestroyItem
+  - EquipWeapon
+  - SpawnWeapon
+  - RPC_SpawnWeapon
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 0

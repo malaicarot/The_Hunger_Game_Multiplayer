@@ -209,7 +209,6 @@ GameObject:
   - component: {fileID: 8439411774307574310}
   - component: {fileID: 768265039558903234}
   - component: {fileID: 6939851109298172367}
-  - component: {fileID: 4814405940465365825}
   m_Layer: 0
   m_Name: PLayer_Pink
   m_TagString: Player
@@ -480,15 +479,3 @@ MonoBehaviour:
   m_SynchronizeLayers:
   - SynchronizeType: 2
     LayerIndex: 0
---- !u!114 &4814405940465365825
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5477060753113494302}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8139f82515017b4aa7bcbca7a6be9de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

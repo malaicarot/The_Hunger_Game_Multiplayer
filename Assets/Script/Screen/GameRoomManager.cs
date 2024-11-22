@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GameRoomManager : MonoBehaviourPunCallbacks
 {
-    public GameObject[] PlayerPrefabs;
-    public Transform[] spawnPosition;
+    // public GameObject[] PlayerPrefabs;
+    public GameObject PlayerPrefabs;
     void Start()
     {
         if (PhotonNetwork.CurrentRoom == null)
@@ -18,10 +18,10 @@ public class GameRoomManager : MonoBehaviourPunCallbacks
     }
     public void GetPlayerPrefabs()
     {
-        int playerIndex = PhotonNetwork.LocalPlayer.ActorNumber - 1;
-        Vector3 spawnPpoint = new Vector3(Random.Range(-18f, 18f), 0, 0);
-        GameObject player = PhotonNetwork.Instantiate(PlayerPrefabs[playerIndex].name, spawnPpoint, transform.rotation, 0);
-        player.name = PlayerPrefabs[playerIndex].name;
+        // int playerIndex = PhotonNetwork.LocalPlayer.ActorNumber - 1;
+        Vector3 spawnpoint = new Vector3(Random.Range(-18f, 18f), 0, 0);
+        GameObject player = PhotonNetwork.Instantiate(PlayerPrefabs.name, spawnpoint, transform.rotation, 0);
+        // player.name = PlayerPrefabs.name;
     }
 
     
