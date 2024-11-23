@@ -9,16 +9,12 @@ public class Explode : MonoBehaviourPunCallbacks
 
     void Start()
     {
-        if (PhotonNetwork.IsMasterClient)
-        {
-            StartCoroutine(ReturnExplosion());
-        }
-
+        StartCoroutine(ReturnExplosion());
     }
     IEnumerator ReturnExplosion()
     {
         yield return new WaitForSeconds(0.8f);
-        PhotonNetwork.Destroy(gameObject);
+        Destroy(gameObject);
     }
 
     void OnTriggerEnter2D(Collider2D other)

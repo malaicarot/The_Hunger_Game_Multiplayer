@@ -315,6 +315,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 8
+  bulletSpeed: 150
   WeaponPrefabs:
   - {fileID: 2949853645633289623, guid: dd91d021c0693cb4097458c65caee0d8, type: 3}
   - {fileID: 2949853645633289623, guid: ab19a654454437b43b6307042adebefe, type: 3}
@@ -326,7 +327,6 @@ MonoBehaviour:
   - {fileID: 1570335359649092007, guid: 9d7dee397430af449b52e4bde9438beb, type: 3}
   - {fileID: 1841226223972534045, guid: e534db0a18c3b13459cfb2b9d7ba88b6, type: 3}
   firePoint: {fileID: 6248560887539960321}
-  PlayerRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &4366937297939023201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -422,6 +422,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bombQuantity: 0
   maxQuantity: 5
+  BombPrefab: {fileID: 313270043968120025, guid: c9f91a1f58201a743aa3fd1372f737e8, type: 3}
 --- !u!114 &1768639326649692214
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,17 +8,14 @@ public class Controller : MonoBehaviour
     [SerializeField] float fallSpeed = -10f;
     [SerializeField] float checkDistance = 1f;
     [SerializeField] LayerMask groundMask;
+    [SerializeField] float bulletSpeed;
 
 
     [SerializeField] GameObject[] WeaponPrefabs;
     [SerializeField] GameObject[] BulletPrefab;
     [SerializeField] Transform firePoint;
-    public Transform _FirePoint
-    {
-        get { return firePoint; }
-    }
 
-    public Vector3 PlayerRotation;
+    Vector3 PlayerRotation;
 
     Rigidbody2D rb;
     public Rigidbody2D Rb { get; }
@@ -37,6 +34,7 @@ public class Controller : MonoBehaviour
 
     PhotonView photonView;
     Shooting myGun;
+    BombController bombBag;
 
     /***************************/
 
@@ -52,6 +50,7 @@ public class Controller : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         map = FindObjectOfType<MapController>();
+        bombBag = GetComponent<BombController>();
     }
 
     void Update()
@@ -60,7 +59,7 @@ public class Controller : MonoBehaviour
         {
             if (myGun == null)
             {
-                myGun = FindObjectOfType<Shooting>();
+                myGun = GetComponentInChildren<Shooting>();
             }
 
             float moveHorizontal = Input.GetAxis("Horizontal");
@@ -96,7 +95,7 @@ public class Controller : MonoBehaviour
             {
                 // myGun.Shoot(myGun.gunType);
                 Vector3 muzzle = firePoint.position;
-                photonView.RPC("RPC_GetBullet", RpcTarget.All, myGun.gunType, muzzle, PlayerRotation * speed);
+                photonView.RPC("RPC_GetBullet", RpcTarget.All, myGun.gunType, muzzle, PlayerRotation * bulletSpeed);
             }
         }
     }
@@ -158,6 +157,7 @@ public class Controller : MonoBehaviour
                     break;
                 case "Item_4":
                     weaponType = WeaponType.Bomb;
+                    bombBag.bombQuantity = 5;
                     break;
                 case "Item_5":
                     weaponType = WeaponType.Shotgun;
@@ -170,12 +170,13 @@ public class Controller : MonoBehaviour
                 photonView.RPC("RPC_DestroyItem", RpcTarget.All, other.gameObject.GetComponent<PhotonView>().ViewID);
             }
 
+
         }
 
     }
 
     [PunRPC]
-    void RPC_DestroyItem(int itemId)
+    public void RPC_DestroyItem(int itemId)
     {
         PhotonView itemPhotonView = PhotonView.Find(itemId);
         if (itemPhotonView != null && itemPhotonView.gameObject != null)
@@ -184,26 +185,26 @@ public class Controller : MonoBehaviour
         }
     }
 
-    void EquipWeapon(WeaponType weaponType)
+    public void EquipWeapon(WeaponType weaponType)
     {
         if (weaponType != WeaponType.Bomb)
         {
-            if (currentWeapon != null)
-            {
-                Destroy(currentWeapon);
-            }
-            currentWeapon = null;
-            currentWeaponType = "";
-
             photonView.RPC("RPC_SpawnWeapon", RpcTarget.All, weaponType, gameObject.GetComponent<PhotonView>().ViewID);
+
         }
     }
 
     [PunRPC]
-    void RPC_SpawnWeapon(WeaponType type, int playerID)
+    public void RPC_SpawnWeapon(WeaponType type, int playerID)
     {
         PhotonView playerPhotonView = PhotonView.Find(playerID);
         Transform target = playerPhotonView.gameObject.transform;
+        if (currentWeapon != null)
+        {
+            Destroy(currentWeapon);
+            currentWeapon = null;
+            currentWeaponType = "";
+        }
         switch (type)
         {
 
@@ -229,8 +230,11 @@ public class Controller : MonoBehaviour
     }
 
     [PunRPC]
-    void RPC_GetBullet(string type, Vector3 position, Vector3 velocity)
+    public void RPC_GetBullet(string type, Vector3 position, Vector3 velocity)
     {
-        PhotonNetwork.Instantiate(BulletPrefab[0].name, position, Quaternion.identity).GetComponent<Rigidbody2D>().velocity = velocity;
+        // PhotonNetwork.
+        GameObject bullet = Instantiate(BulletPrefab[0], position, Quaternion.identity);
+        bullet.GetComponent<Rigidbody2D>().velocity = velocity;
+        Destroy(bullet, 4f);
     }
 }

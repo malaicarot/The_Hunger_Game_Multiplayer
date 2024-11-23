@@ -13,54 +13,30 @@ public enum BulletType
 public class Shooting : MonoBehaviourPunCallbacks
 {
     [SerializeField] float timeExits = 10f;
+    [SerializeField] GameObject ExplosionPrefab;
     public string gunType;
 
     void Start()
     {
-        if (gameObject.name.ToString() != "Bomb")
+        if (gunType != "Bomb")
         {
             StartCoroutine(timeExitsWeapon());
+        }else{
+            StartCoroutine(Explosion());
         }
 
     }
-    void Update()
-    {
-        // if (bulletShooter == null)
-        // {
-        //     bulletShooter = FindObjectOfType<BulletShooter>();
-        // }
-
-        // if (gameObject.name.ToString() != "Bomb")
-        // {
-        //     float fire = Input.GetAxis("Fire1");
-        //     if (photonView.IsMine && Input.GetButtonDown("Fire1") && fire != 0)
-        //     {
-        //         // Shoot();
-        //         Debug.Log("pew pew pew!");
-        //     }
-        // }
-        // else
-        // {
-        //     if (photonView.IsMine)
-        //     {
-        //         StartCoroutine(Explosion());
-        //     }
-        // }
-    }
-
-
     IEnumerator Explosion()
     {
         yield return new WaitForSeconds(2f);
-        PhotonNetwork.Instantiate("Explosion", transform.position, transform.rotation);
-        PhotonNetwork.Destroy(gameObject);
+        Instantiate(ExplosionPrefab, transform.position, transform.rotation);
+        Destroy(gameObject);
     }
 
     IEnumerator timeExitsWeapon()
     {
         yield return new WaitForSeconds(timeExits);
         Destroy(gameObject);
-
     }
 
 }

@@ -128,8 +128,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50c6f7d669f8fd5498e7b02351d5fd76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePoint: {fileID: 2623293569873930480}
   timeExits: 10
+  ExplosionPrefab: {fileID: 6364559037224406732, guid: e893f704a5f0a4140bdd0d22b4049b49, type: 3}
+  gunType: Bomb
 --- !u!61 &-1367279334594253469
 BoxCollider2D:
   m_ObjectHideFlags: 0
