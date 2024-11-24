@@ -166,7 +166,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5125658b955eb54eb8a2671ef2a9226, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerPrefabs: {fileID: 2080397856647694571, guid: e0ee91c41fee1a842b0df5f97f032764, type: 3}
+  PlayerPrefabs:
+  - {fileID: 2080397856647694571, guid: e0ee91c41fee1a842b0df5f97f032764, type: 3}
+  - {fileID: 5202184468994718907, guid: 5ed95231d10e8a64cb61486053240963, type: 3}
+  - {fileID: 1100745834397564125, guid: 7fb952aed99855c4db0f65008c5a9237, type: 3}
+  - {fileID: 3542445034703188170, guid: 8b0e071d19f276b47911cf5fb7e2db6b, type: 3}
+  - {fileID: 1916010821706401280, guid: a703eebe48e07d5448faae6386d85ecd, type: 3}
 --- !u!1 &316198502
 GameObject:
   m_ObjectHideFlags: 0
