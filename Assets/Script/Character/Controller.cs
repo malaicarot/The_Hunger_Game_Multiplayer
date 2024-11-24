@@ -169,10 +169,7 @@ public class Controller : MonoBehaviour
                 EquipWeapon(weaponType);
                 photonView.RPC("RPC_DestroyItem", RpcTarget.All, other.gameObject.GetComponent<PhotonView>().ViewID);
             }
-
-
         }
-
     }
 
     [PunRPC]
@@ -232,7 +229,6 @@ public class Controller : MonoBehaviour
     [PunRPC]
     public void RPC_GetBullet(string type, Vector3 position, Vector3 velocity)
     {
-        // PhotonNetwork.
         GameObject bullet = Instantiate(BulletPrefab[0], position, Quaternion.identity);
         bullet.GetComponent<Rigidbody2D>().velocity = velocity;
         Destroy(bullet, 4f);

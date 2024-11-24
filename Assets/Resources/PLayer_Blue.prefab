@@ -421,7 +421,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bombQuantity: 0
-  maxQuantity: 5
+  maxQuantity: 10
   BombPrefab: {fileID: 313270043968120025, guid: c9f91a1f58201a743aa3fd1372f737e8, type: 3}
 --- !u!114 &1768639326649692214
 MonoBehaviour:
