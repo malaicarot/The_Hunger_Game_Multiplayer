@@ -95,7 +95,8 @@ public class Controller : MonoBehaviour
             {
                 // myGun.Shoot(myGun.gunType);
                 Vector3 muzzle = firePoint.position;
-                photonView.RPC("RPC_GetBullet", RpcTarget.All, myGun.gunType, muzzle, PlayerRotation * bulletSpeed);
+                Quaternion bulletRotation = firePoint.rotation;
+                photonView.RPC("RPC_GetBullet", RpcTarget.All, myGun.gunType, muzzle, bulletRotation, PlayerRotation * bulletSpeed);
             }
         }
     }
@@ -163,12 +164,15 @@ public class Controller : MonoBehaviour
                     weaponType = WeaponType.Shotgun;
                     break;
             }
-
             if (photonView.IsMine)
             {
                 EquipWeapon(weaponType);
                 photonView.RPC("RPC_DestroyItem", RpcTarget.All, other.gameObject.GetComponent<PhotonView>().ViewID);
             }
+        }
+        else
+        {
+            Debug.Log("THIS IS BULLET!!!!");
         }
     }
 
@@ -227,9 +231,9 @@ public class Controller : MonoBehaviour
     }
 
     [PunRPC]
-    public void RPC_GetBullet(string type, Vector3 position, Vector3 velocity)
+    public void RPC_GetBullet(string type, Vector3 position, Quaternion bulletRotation, Vector3 velocity)
     {
-        GameObject bullet = Instantiate(BulletPrefab[0], position, Quaternion.identity);
+        GameObject bullet = Instantiate(BulletPrefab[0], position, bulletRotation);
         bullet.GetComponent<Rigidbody2D>().velocity = velocity;
         Destroy(bullet, 4f);
     }

@@ -49,6 +49,7 @@ MonoBehaviour:
   - RPC_SpawnWeapon
   - InitializeBullet
   - RPC_DestroyBullet
+  - ForceAffected
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 0

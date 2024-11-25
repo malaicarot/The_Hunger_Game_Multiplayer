@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7115320587236516432}
   - component: {fileID: 3575895103014438665}
   - component: {fileID: 7928191303735176014}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,7 +114,7 @@ GameObject:
   - component: {fileID: 750347432730922770}
   - component: {fileID: 1491874502857900528}
   - component: {fileID: 345445833760059315}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -229,7 +229,7 @@ GameObject:
   - component: {fileID: 974456388625082767}
   - component: {fileID: 9100241027252698032}
   - component: {fileID: 1768639326649692214}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PLayer_Blue
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -418,7 +418,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 8
-  bulletSpeed: 150
+  bulletSpeed: 75
   WeaponPrefabs:
   - {fileID: 2949853645633289623, guid: dd91d021c0693cb4097458c65caee0d8, type: 3}
   - {fileID: 2949853645633289623, guid: ab19a654454437b43b6307042adebefe, type: 3}
@@ -553,7 +553,7 @@ GameObject:
   - component: {fileID: 6248560887539960321}
   - component: {fileID: 7648703265433387329}
   - component: {fileID: 6532001273476088052}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -625,7 +625,7 @@ GameObject:
   - component: {fileID: 7773328836918312752}
   - component: {fileID: 3771699521801831060}
   - component: {fileID: 4341938612414315502}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
