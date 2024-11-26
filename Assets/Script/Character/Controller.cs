@@ -1,4 +1,7 @@
+using System.Collections;
 using Photon.Pun;
+using Photon.Realtime;
+using TMPro;
 using UnityEngine;
 
 public class Controller : MonoBehaviour
@@ -14,6 +17,9 @@ public class Controller : MonoBehaviour
     [SerializeField] GameObject[] WeaponPrefabs;
     [SerializeField] GameObject[] BulletPrefab;
     [SerializeField] Transform firePoint;
+
+    [SerializeField] GameObject ResultUI;
+    [SerializeField] TextMeshProUGUI ResultText;
 
     Vector3 PlayerRotation;
 
@@ -42,6 +48,7 @@ public class Controller : MonoBehaviour
     GameObject currentWeapon;
     string currentWeaponType;
     int weaponIndex;
+    int bulletIndex;
 
 
     void Start()
@@ -51,12 +58,17 @@ public class Controller : MonoBehaviour
         animator = GetComponent<Animator>();
         map = FindObjectOfType<MapController>();
         bombBag = GetComponent<BombController>();
+        if (photonView.IsMine)
+        {
+            photonView.RPC("RPC_ActiveReSultPanel", RpcTarget.All);
+        }
     }
 
     void Update()
     {
         if (photonView.IsMine)
         {
+            photonView.RPC("PlayerFallOut", RpcTarget.All, photonView.Owner);
             if (myGun == null)
             {
                 myGun = GetComponentInChildren<Shooting>();
@@ -93,7 +105,6 @@ public class Controller : MonoBehaviour
 
             if (Input.GetButtonDown("Fire1") && myGun != null)
             {
-                // myGun.Shoot(myGun.gunType);
                 Vector3 muzzle = firePoint.position;
                 Quaternion bulletRotation = firePoint.rotation;
                 photonView.RPC("RPC_GetBullet", RpcTarget.All, myGun.gunType, muzzle, bulletRotation, PlayerRotation * bulletSpeed);
@@ -134,12 +145,18 @@ public class Controller : MonoBehaviour
 
     }
 
+
+    IEnumerator DestroyPlayer()
+    {
+        yield return new WaitForSeconds(2f);
+        PhotonNetwork.Destroy(gameObject);
+    }
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Boundary"))
         {
             isDeath = true;
-            // Destroy(gameObject);
+            StartCoroutine(DestroyPlayer());
         }
         else if (other.CompareTag("Item"))
         {
@@ -170,10 +187,31 @@ public class Controller : MonoBehaviour
                 photonView.RPC("RPC_DestroyItem", RpcTarget.All, other.gameObject.GetComponent<PhotonView>().ViewID);
             }
         }
-        else
+    }
+
+
+    [PunRPC]
+    void PlayerFallOut(Player player)
+    {
+        int playerCount = PhotonNetwork.PlayerList.Length;
+        if (playerCount == 1)
         {
-            Debug.Log("THIS IS BULLET!!!!");
+            ResultText.text = "You Win!";
+            ResultUI.SetActive(true);
+            StartCoroutine(ReturnToMenu());
         }
+    }
+
+    [PunRPC]
+    void RPC_ActiveReSultPanel()
+    {
+        ResultUI.SetActive(false);
+    }
+
+    IEnumerator ReturnToMenu()
+    {
+        yield return new WaitForSeconds(4f);
+        PhotonNetwork.LeaveRoom();
     }
 
     [PunRPC]
@@ -233,7 +271,22 @@ public class Controller : MonoBehaviour
     [PunRPC]
     public void RPC_GetBullet(string type, Vector3 position, Quaternion bulletRotation, Vector3 velocity)
     {
-        GameObject bullet = Instantiate(BulletPrefab[0], position, bulletRotation);
+        switch (type)
+        {
+            case "Pistol":
+                bulletIndex = 0;
+                break;
+            case "Rifle":
+                bulletIndex = 1;
+                break;
+            case "Shotgun":
+                bulletIndex = 2;
+                break;
+            case "Sniper":
+                bulletIndex = 3;
+                break;
+        }
+        GameObject bullet = Instantiate(BulletPrefab[bulletIndex], position, bulletRotation);
         bullet.GetComponent<Rigidbody2D>().velocity = velocity;
         Destroy(bullet, 4f);
     }

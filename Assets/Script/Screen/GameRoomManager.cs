@@ -20,7 +20,6 @@ public class GameRoomManager : MonoBehaviourPunCallbacks
         int playerIndex = PhotonNetwork.LocalPlayer.ActorNumber - 1;
         Vector3 spawnpoint = new Vector3(Random.Range(-18f, 18f), 0, 0);
         GameObject player = PhotonNetwork.Instantiate(PlayerPrefabs[playerIndex].name, spawnpoint, transform.rotation, 0);
-        // player.name = PlayerPrefabs.name;
     }
 
     void OnGUI()

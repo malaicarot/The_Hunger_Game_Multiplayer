@@ -50,6 +50,9 @@ MonoBehaviour:
   - InitializeBullet
   - RPC_DestroyBullet
   - ForceAffected
+  - RPC_UpdateBombBag
+  - PlayerFallOut
+  - RPC_ActiveReSultPanel
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 0

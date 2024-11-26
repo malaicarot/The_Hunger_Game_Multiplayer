@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 783bd3b3a8e1a304ab9ada090831e4ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletForce: 50
+  bulletForce: 40
   playerMask:
     serializedVersion: 2
     m_Bits: 64
