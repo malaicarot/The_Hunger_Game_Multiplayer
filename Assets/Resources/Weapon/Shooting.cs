@@ -30,6 +30,7 @@ public class Shooting : MonoBehaviourPunCallbacks
     {
         yield return new WaitForSeconds(2f);
         Instantiate(ExplosionPrefab, transform.position, transform.rotation);
+        SoundController._instance.ExplodeAudioPlay();
         Destroy(gameObject);
     }
 

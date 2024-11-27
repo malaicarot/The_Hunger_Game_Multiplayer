@@ -161,6 +161,7 @@ public class Controller : MonoBehaviour
         {
             ItemController item = other.gameObject.GetComponent<ItemController>();
             string name = item.ItemType.ToString();
+            SoundController._instance.GetItemAudioPlay();
             switch (name)
             {
                 case "Item_1":
@@ -188,7 +189,6 @@ public class Controller : MonoBehaviour
         }
     }
 
-
     public void ActiveReSultPanel()
     {
         photonView.RPC("RPC_ActiveReSultPanel", RpcTarget.All);
@@ -206,7 +206,6 @@ public class Controller : MonoBehaviour
         ResultUI.SetActive(true);
         float newY = Mathf.Sin(frequency) * amplitude;
         ResultUI.transform.position = new Vector2(ResultUI.transform.position.x, ResultUI.transform.position.y + newY);
-        // photonView.RPC("RPC_AllLeaveRoom", RpcTarget.All);
     }
 
     [PunRPC]
@@ -214,18 +213,7 @@ public class Controller : MonoBehaviour
     {
         ResultUI.SetActive(false);
     }
-
-    // [PunRPC]
-    // void RPC_AllLeaveRoom(){
-    //     StartCoroutine(ReturnToMenu());
-    // }
-    // IEnumerator ReturnToMenu()
-    // {
-    //     yield return new WaitForSeconds(2f);
-    //     PhotonNetwork.LeaveRoom();
-    //     // UnityEngine.SceneManagement.SceneManager.LoadScene("GameLobby");
-    // }
-
+    
     [PunRPC]
     public void RPC_DestroyItem(int itemId)
     {
@@ -299,6 +287,7 @@ public class Controller : MonoBehaviour
                 break;
         }
         GameObject bullet = Instantiate(BulletPrefab[bulletIndex], position, bulletRotation);
+        SoundController._instance.ShootAudioPlay(type);
         bullet.GetComponent<Rigidbody2D>().velocity = velocity;
         Destroy(bullet, 4f);
     }

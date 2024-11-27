@@ -24,8 +24,15 @@ public class GameRoomManager : MonoBehaviourPunCallbacks
         {
             PlayerAliveStatus[player.ActorNumber] = true;
         }
+        StartCoroutine(PlayerMusic());
+
+        // if(PhotonNetwork.IsMasterClient){
+            
+        // }
+
+        
     }
-    public void GetPlayerPrefabs()
+    void GetPlayerPrefabs()
     {
         int playerIndex = PhotonNetwork.LocalPlayer.ActorNumber - 1;
         Vector3 spawnpoint = new Vector3(Random.Range(-18f, 18f), 0, 0);
@@ -54,7 +61,7 @@ public class GameRoomManager : MonoBehaviourPunCallbacks
         }
         if (alives == 1)
         {
-            Player lastPlayer = PhotonNetwork.CurrentRoom.GetPlayer(lastPlayerID);
+            // Player lastPlayer = PhotonNetwork.CurrentRoom.GetPlayer(lastPlayerID);
             if (PlayerObject.TryGetValue(lastPlayerID, out GameObject lastPlayerObject))
             {
                 var playerScript = lastPlayerObject.GetComponent<Controller>();
@@ -63,9 +70,7 @@ public class GameRoomManager : MonoBehaviourPunCallbacks
                 {
                     isLeaveRoom = true;
                     photonView.RPC("RPC_AllLeaveRoom", RpcTarget.All);
-
                 }
-
             }
         }
     }
@@ -79,10 +84,15 @@ public class GameRoomManager : MonoBehaviourPunCallbacks
 
     IEnumerator ReturnToMenu()
     {
+        SoundController._instance.WinnerAudioPlay();
         yield return new WaitForSeconds(4f);
         PhotonNetwork.LeaveRoom();
-        // UnityEngine.SceneManagement.SceneManager.LoadScene("GameLobby");
         isLeaveRoom = false;
+    }
+
+    IEnumerator PlayerMusic(){
+        yield return new WaitForSeconds(2f);
+        SoundController._instance.PlayBackgroundMusic();
     }
 
     void OnGUI()
@@ -107,6 +117,8 @@ public class GameRoomManager : MonoBehaviourPunCallbacks
     public override void OnLeftRoom()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("GameLobby");
+        SoundController._instance.StopBackgroundMusic();
+        SoundController._instance.WinnerAudioStop();
     }
 
     public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)

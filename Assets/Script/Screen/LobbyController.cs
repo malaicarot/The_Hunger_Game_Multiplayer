@@ -176,15 +176,9 @@ public class LobbyController : MonoBehaviourPunCallbacks
 
         StartGameButton.gameObject.SetActive(CheckPlayersReady());
     }
-
-
     #endregion
 
-
-
-
     #region UI CALLBACKS
-
     public void OnBackButton()
     {
         if (PhotonNetwork.InLobby)
