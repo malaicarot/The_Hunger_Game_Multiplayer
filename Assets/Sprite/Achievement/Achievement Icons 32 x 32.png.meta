@@ -1,0 +1,2107 @@
+fileFormatVersion: 2
+guid: e51b8ac55abc8254f9ecc95a3f3e148a
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 392
+        width: 26
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea2427758d39dc744b35ced3470af7ec
+      internalID: -1751349906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 394
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0a7f1a076ab34f4283df6f0bd0fe79d
+      internalID: -1053217217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_2
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 394
+        width: 30
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25501b2af0479e249b9556416ed43f31
+      internalID: 672157470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_3
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 396
+        width: 28
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed436a1fb8578674bb7e2fd443ac18be
+      internalID: -787506658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_4
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 393
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6651222c774a4b644ae01d9f98892840
+      internalID: -1899742172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_5
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 395
+        width: 24
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a429721a43d00094892fb6dba89113bc
+      internalID: -1996311260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_6
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 387
+        width: 24
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e129899dec21d04c9d9cb1c7f99cd89
+      internalID: 237806619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_7
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 389
+        width: 22
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7f14369646558f41896bb39bf74ccfd
+      internalID: 2055873370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_8
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 353
+        width: 21
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ca6ee27e9c0ab946ab6c759b759a476
+      internalID: 567150246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_9
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 355
+        width: 19
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39575f2ec3ccbfc4e8b2e5694d6210ff
+      internalID: -1604333799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_10
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 353
+        width: 26
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60c5c2ef3c515324f9386cf2ae0c826a
+      internalID: -366200748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_11
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 355
+        width: 24
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42b60e3d35ffe1143b3467b22401a008
+      internalID: 1251928202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_12
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 355
+        width: 30
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec446bb2866684243bae75414cb82456
+      internalID: -1727862539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_13
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 357
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a56aa4b6cfed4e24cb9ae8192ec49897
+      internalID: -1004662336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_14
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 354
+        width: 28
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71abab18dee06df4fbe4c98ea7c711c3
+      internalID: 142078087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_15
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 356
+        width: 26
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd1a1a1c9dbe19049acbd54e79d42288
+      internalID: -80721425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_16
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 323
+        width: 29
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80db588e5a1c7ab499c7907fbc8b1a8b
+      internalID: -572830085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_17
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 316
+        width: 31
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ca0d533246aac64cbbd417b6f2a6e31
+      internalID: -1431768515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_18
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 318
+        width: 29
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 674f564d0ed649246b2c6fe83e869080
+      internalID: -686530157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_19
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 321
+        width: 31
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d85cb0e0bb558e5448427bfb060d4ecc
+      internalID: 135351286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_20
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 323
+        width: 32
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f028317d1bb28a24b9b2033e9f347518
+      internalID: 383155684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_21
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 325
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 978a00c8e02c20b46a2670b0befc1932
+      internalID: -722831458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_22
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 326
+        width: 26
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ad86b7d86e188f4b93ba4516243bee0
+      internalID: 1143084634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_23
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 291
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e461ed44e006f7b42881893ca0089264
+      internalID: -1127721384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_24
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 289
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01d06c46dcdac164397a7980e982052f
+      internalID: 1104498684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_25
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 291
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcacab8a4c5642941b7cef6aff0983aa
+      internalID: 682253031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_26
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 283
+        width: 28
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ddc94432995f5a4f9853ed12f95fa3b
+      internalID: -1535374615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_27
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 281
+        width: 30
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 500b9a7736dfb3841baee42bc52ba62f
+      internalID: 1804185811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_28
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 283
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5f886f0e1abef14ba4b82f3d5b30369
+      internalID: 1180670157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_29
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 285
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ad31a693abddeb48a56d9987c4a3b04
+      internalID: -1032716028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_30
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 281
+        width: 30
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df96ef93633f6344a935596bb369bf10
+      internalID: 947105246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_31
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 248
+        width: 28
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08dbc3449f06e6242ba3d1a237b1b36a
+      internalID: -1286734632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_32
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 248
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d4d92b3916e64946b64a33d52c8a6c8
+      internalID: -1850677341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_33
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 250
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e10fe2ba2183d441a3cdb64db529ab0
+      internalID: -652467087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_34
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 248
+        width: 28
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5e825e36312ca94089c745101f6cf5e
+      internalID: -1238057087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_35
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 246
+        width: 30
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05661e08d5da93449a97121d92141147
+      internalID: 1291229673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_36
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 248
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f88d3a3ed38daf44aa42d7bb58006f28
+      internalID: -1433201831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_37
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 250
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4a6b838088bd8e438bbbf83129c9ec9
+      internalID: -2091803137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_38
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 211
+        width: 29
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49575eba8e4ca7047b73791234b1c3cc
+      internalID: 201798540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_39
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 217
+        width: 26
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ef611b13ab16fd46adde60d99b69bfb
+      internalID: 2040102175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_40
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 219
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b93f0f0c86a53b24799fd66a1b82f401
+      internalID: 940673181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_41
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 216
+        width: 34
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88f553e78de4d164b817121425c0b033
+      internalID: 1068441965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_42
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 218
+        width: 32
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bef3b032f5aea243859207d75850c55
+      internalID: 1005179415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_43
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 218
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55b188aab3219004daa2841189e71f86
+      internalID: -1649830885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_44
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 220
+        width: 24
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e3ab21032f857947a75c84763b354c9
+      internalID: 1468676907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_45
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 212
+        width: 24
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c493cad5c10a6a4cb358744c81ce517
+      internalID: -1809500945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_46
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 179
+        width: 22
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 198d6e88c014c2547b4382480073705a
+      internalID: 1768560546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_47
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 176
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eec1614d44af61742946b29bdf941a79
+      internalID: 1593600677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_48
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 178
+        width: 29
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b463e786d31a5a745b6f414307b4e35b
+      internalID: -1917113725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_49
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 174
+        width: 31
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dea961cb904d52a41bb08ad486c2f9a4
+      internalID: -1125885035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_50
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 176
+        width: 34
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc778e9233ca82842a57306331ae828d
+      internalID: -117412381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_51
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 178
+        width: 32
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05cde1954d5a90f4d8ea26ce21aadde8
+      internalID: -1360358473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_52
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 179
+        width: 30
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1530058e90d35924b8e2ad23197748e5
+      internalID: -299778862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_53
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 144
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfa258daecac3fa4b89042d7a2584a11
+      internalID: 2016991754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_54
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 141
+        width: 28
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc15451d6f7b50449945d8246852fd1f
+      internalID: 1137701070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_55
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 143
+        width: 26
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e751f9a1094842d4ead21cb83485f049
+      internalID: 839695059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_56
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 141
+        width: 32
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38fea23a91e733944a2a571a1341064a
+      internalID: 2085431211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_57
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 143
+        width: 30
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31e518f81bcb03641a7a8ed42f6c7d6b
+      internalID: -1927677295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_58
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 141
+        width: 32
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb3d55da8e81e18439f9fb78e64447ab
+      internalID: -116225038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_59
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 143
+        width: 30
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c7faae96fa3b364799e6d95f81a8786
+      internalID: 1480606919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_60
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 108
+        width: 32
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5891d39de8ed0654aab0554cb100e49b
+      internalID: -1045581042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_61
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 110
+        width: 30
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df15e84a0c5a0fe49a8ce11880ecc465
+      internalID: 177438964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_62
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 109
+        width: 31
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9aa0f05251110b428de065b4f5df100
+      internalID: -1344736963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_63
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 111
+        width: 32
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4919eb4c177c21a419cd0909ce0494b0
+      internalID: -803949556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_64
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 113
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1e8cbb0bc9586343bfc57ab6cd6d48e
+      internalID: 1292928905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_65
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 111
+        width: 29
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 587b68e1c66aeb846ba45045b5f1172d
+      internalID: 2001064360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_66
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 113
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f025170537c78b4ea1f86c0ded588bb
+      internalID: -1232995882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_67
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 82
+        width: 24
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9d732592c642af47a4e5d444db0adea
+      internalID: 1473936422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_68
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 78
+        width: 29
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ecbf5f0093ce774ea9630b9c2d471ca
+      internalID: 1485134799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_69
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 71
+        width: 31
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac782b27fdae6d34f8dd83a4b54c8168
+      internalID: -1389562587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_70
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 73
+        width: 29
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f42f72a80ecd3243be722d56d94aea3
+      internalID: 1086828004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_71
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 76
+        width: 31
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a3d4be865621c44cac7eaf0498cf4a0
+      internalID: 1074332207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_72
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 78
+        width: 32
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddb96253a9c8c9347b4a6b1cca025ffd
+      internalID: 153946012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_73
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 80
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60dc928205c1f8143b9b810b0b4ecb23
+      internalID: -517058687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_74
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 42
+        width: 26
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39b691d5c4a6c9c41b5242c1afca6496
+      internalID: 1576962060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_75
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 44
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25ff2727d38cb18499156a799f60a0f2
+      internalID: 1357760371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_76
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 41
+        width: 34
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88dbc9ebdd610db4e88bcdcfee6ba25e
+      internalID: -717674019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_77
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 43
+        width: 32
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fae341546c312504fba91a413f792a9d
+      internalID: -1281979595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_78
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 43
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f876c41709b821f4ea691c9d9ab7d769
+      internalID: -2111969172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_79
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 45
+        width: 24
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39a304f1c2e04fe46b9ffde39a6b3702
+      internalID: 1261566012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_80
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 37
+        width: 24
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c539074b295c097408de0330f59234ff
+      internalID: -131054799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_81
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 39
+        width: 22
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 587bc1926456f7940907bf7487f8e599
+      internalID: 289238327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_82
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 3
+        width: 31
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4603d474c1f408a4cb73e36bc6c46733
+      internalID: -264085592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_83
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 5
+        width: 29
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 759a0ccfad71c5549ae4a075d8b779eb
+      internalID: -1468371767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_84
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 4
+        width: 26
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c8cdb3d8eae5ce4d91d087366126bfe
+      internalID: -1936676901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_85
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 6
+        width: 24
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 985a681214006d64c962cd4bef3b7cf6
+      internalID: -668835290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_86
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 5
+        width: 30
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cc75e91b00b3eb47af4c60abd98ce6f
+      internalID: 1437167182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_87
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 7
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6029b5eb14761d04ab613b2439e62afc
+      internalID: -266091082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_88
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 4
+        width: 28
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3488ea10736020d439e28cb481d8e88e
+      internalID: -1211005761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Achievement Icons 32 x 32_89
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 6
+        width: 26
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e83dcb01b44430147a2730f335f89ac3
+      internalID: -121665995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Achievement Icons 32 x 32_0: -1751349906
+      Achievement Icons 32 x 32_1: -1053217217
+      Achievement Icons 32 x 32_10: -366200748
+      Achievement Icons 32 x 32_11: 1251928202
+      Achievement Icons 32 x 32_12: -1727862539
+      Achievement Icons 32 x 32_13: -1004662336
+      Achievement Icons 32 x 32_14: 142078087
+      Achievement Icons 32 x 32_15: -80721425
+      Achievement Icons 32 x 32_16: -572830085
+      Achievement Icons 32 x 32_17: -1431768515
+      Achievement Icons 32 x 32_18: -686530157
+      Achievement Icons 32 x 32_19: 135351286
+      Achievement Icons 32 x 32_2: 672157470
+      Achievement Icons 32 x 32_20: 383155684
+      Achievement Icons 32 x 32_21: -722831458
+      Achievement Icons 32 x 32_22: 1143084634
+      Achievement Icons 32 x 32_23: -1127721384
+      Achievement Icons 32 x 32_24: 1104498684
+      Achievement Icons 32 x 32_25: 682253031
+      Achievement Icons 32 x 32_26: -1535374615
+      Achievement Icons 32 x 32_27: 1804185811
+      Achievement Icons 32 x 32_28: 1180670157
+      Achievement Icons 32 x 32_29: -1032716028
+      Achievement Icons 32 x 32_3: -787506658
+      Achievement Icons 32 x 32_30: 947105246
+      Achievement Icons 32 x 32_31: -1286734632
+      Achievement Icons 32 x 32_32: -1850677341
+      Achievement Icons 32 x 32_33: -652467087
+      Achievement Icons 32 x 32_34: -1238057087
+      Achievement Icons 32 x 32_35: 1291229673
+      Achievement Icons 32 x 32_36: -1433201831
+      Achievement Icons 32 x 32_37: -2091803137
+      Achievement Icons 32 x 32_38: 201798540
+      Achievement Icons 32 x 32_39: 2040102175
+      Achievement Icons 32 x 32_4: -1899742172
+      Achievement Icons 32 x 32_40: 940673181
+      Achievement Icons 32 x 32_41: 1068441965
+      Achievement Icons 32 x 32_42: 1005179415
+      Achievement Icons 32 x 32_43: -1649830885
+      Achievement Icons 32 x 32_44: 1468676907
+      Achievement Icons 32 x 32_45: -1809500945
+      Achievement Icons 32 x 32_46: 1768560546
+      Achievement Icons 32 x 32_47: 1593600677
+      Achievement Icons 32 x 32_48: -1917113725
+      Achievement Icons 32 x 32_49: -1125885035
+      Achievement Icons 32 x 32_5: -1996311260
+      Achievement Icons 32 x 32_50: -117412381
+      Achievement Icons 32 x 32_51: -1360358473
+      Achievement Icons 32 x 32_52: -299778862
+      Achievement Icons 32 x 32_53: 2016991754
+      Achievement Icons 32 x 32_54: 1137701070
+      Achievement Icons 32 x 32_55: 839695059
+      Achievement Icons 32 x 32_56: 2085431211
+      Achievement Icons 32 x 32_57: -1927677295
+      Achievement Icons 32 x 32_58: -116225038
+      Achievement Icons 32 x 32_59: 1480606919
+      Achievement Icons 32 x 32_6: 237806619
+      Achievement Icons 32 x 32_60: -1045581042
+      Achievement Icons 32 x 32_61: 177438964
+      Achievement Icons 32 x 32_62: -1344736963
+      Achievement Icons 32 x 32_63: -803949556
+      Achievement Icons 32 x 32_64: 1292928905
+      Achievement Icons 32 x 32_65: 2001064360
+      Achievement Icons 32 x 32_66: -1232995882
+      Achievement Icons 32 x 32_67: 1473936422
+      Achievement Icons 32 x 32_68: 1485134799
+      Achievement Icons 32 x 32_69: -1389562587
+      Achievement Icons 32 x 32_7: 2055873370
+      Achievement Icons 32 x 32_70: 1086828004
+      Achievement Icons 32 x 32_71: 1074332207
+      Achievement Icons 32 x 32_72: 153946012
+      Achievement Icons 32 x 32_73: -517058687
+      Achievement Icons 32 x 32_74: 1576962060
+      Achievement Icons 32 x 32_75: 1357760371
+      Achievement Icons 32 x 32_76: -717674019
+      Achievement Icons 32 x 32_77: -1281979595
+      Achievement Icons 32 x 32_78: -2111969172
+      Achievement Icons 32 x 32_79: 1261566012
+      Achievement Icons 32 x 32_8: 567150246
+      Achievement Icons 32 x 32_80: -131054799
+      Achievement Icons 32 x 32_81: 289238327
+      Achievement Icons 32 x 32_82: -264085592
+      Achievement Icons 32 x 32_83: -1468371767
+      Achievement Icons 32 x 32_84: -1936676901
+      Achievement Icons 32 x 32_85: -668835290
+      Achievement Icons 32 x 32_86: 1437167182
+      Achievement Icons 32 x 32_87: -266091082
+      Achievement Icons 32 x 32_88: -1211005761
+      Achievement Icons 32 x 32_89: -121665995
+      Achievement Icons 32 x 32_9: -1604333799
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -17,10 +17,10 @@ public class Controller : MonoBehaviour
     [SerializeField] GameObject[] WeaponPrefabs;
     [SerializeField] GameObject[] BulletPrefab;
     [SerializeField] Transform firePoint;
-
     [SerializeField] GameObject ResultUI;
-    [SerializeField] TextMeshProUGUI ResultText;
-
+    [SerializeField] GameObject BombBag;
+    float amplitude = 0.5f;
+    [SerializeField] float frequency = -20f;
     Vector3 PlayerRotation;
 
     Rigidbody2D rb;
@@ -41,7 +41,6 @@ public class Controller : MonoBehaviour
     PhotonView photonView;
     Shooting myGun;
     BombController bombBag;
-
     /***************************/
 
     WeaponType weaponType;
@@ -49,7 +48,6 @@ public class Controller : MonoBehaviour
     string currentWeaponType;
     int weaponIndex;
     int bulletIndex;
-
 
     void Start()
     {
@@ -60,7 +58,7 @@ public class Controller : MonoBehaviour
         bombBag = GetComponent<BombController>();
         if (photonView.IsMine)
         {
-            photonView.RPC("RPC_ActiveReSultPanel", RpcTarget.All);
+            photonView.RPC("RPC_HideReSultPanel", RpcTarget.All);
         }
     }
 
@@ -68,7 +66,6 @@ public class Controller : MonoBehaviour
     {
         if (photonView.IsMine)
         {
-            photonView.RPC("PlayerFallOut", RpcTarget.All, photonView.Owner);
             if (myGun == null)
             {
                 myGun = GetComponentInChildren<Shooting>();
@@ -149,13 +146,15 @@ public class Controller : MonoBehaviour
     IEnumerator DestroyPlayer()
     {
         yield return new WaitForSeconds(2f);
-        PhotonNetwork.Destroy(gameObject);
+        Destroy(gameObject);
     }
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Boundary"))
         {
+            GameRoomManager gameManager = FindObjectOfType<GameRoomManager>();
             isDeath = true;
+            gameManager.PlayerFallOut(photonView.OwnerActorNr);
             StartCoroutine(DestroyPlayer());
         }
         else if (other.CompareTag("Item"))
@@ -190,29 +189,42 @@ public class Controller : MonoBehaviour
     }
 
 
-    [PunRPC]
-    void PlayerFallOut(Player player)
+    public void ActiveReSultPanel()
     {
-        int playerCount = PhotonNetwork.PlayerList.Length;
-        if (playerCount == 1)
-        {
-            ResultText.text = "You Win!";
-            ResultUI.SetActive(true);
-            StartCoroutine(ReturnToMenu());
-        }
+        photonView.RPC("RPC_ActiveReSultPanel", RpcTarget.All);
     }
 
     [PunRPC]
     void RPC_ActiveReSultPanel()
     {
+        BombBag.SetActive(false);
+        StartCoroutine(AppearMedal());
+    }
+
+    IEnumerator AppearMedal(){
+        yield return new WaitForSeconds(2f);
+        ResultUI.SetActive(true);
+        float newY = Mathf.Sin(frequency) * amplitude;
+        ResultUI.transform.position = new Vector2(ResultUI.transform.position.x, ResultUI.transform.position.y + newY);
+        // photonView.RPC("RPC_AllLeaveRoom", RpcTarget.All);
+    }
+
+    [PunRPC]
+    void RPC_HideReSultPanel()
+    {
         ResultUI.SetActive(false);
     }
 
-    IEnumerator ReturnToMenu()
-    {
-        yield return new WaitForSeconds(4f);
-        PhotonNetwork.LeaveRoom();
-    }
+    // [PunRPC]
+    // void RPC_AllLeaveRoom(){
+    //     StartCoroutine(ReturnToMenu());
+    // }
+    // IEnumerator ReturnToMenu()
+    // {
+    //     yield return new WaitForSeconds(2f);
+    //     PhotonNetwork.LeaveRoom();
+    //     // UnityEngine.SceneManagement.SceneManager.LoadScene("GameLobby");
+    // }
 
     [PunRPC]
     public void RPC_DestroyItem(int itemId)
