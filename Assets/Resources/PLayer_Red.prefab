@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2080397856647694571, guid: e0ee91c41fee1a842b0df5f97f032764, type: 3}
       propertyPath: m_Name
-      value: PLayer_Blue Variant
+      value: PLayer_Red
       objectReference: {fileID: 0}
     - target: {fileID: 2790741456685326430, guid: e0ee91c41fee1a842b0df5f97f032764, type: 3}
       propertyPath: m_LocalPosition.x
@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3336727141598791337, guid: e0ee91c41fee1a842b0df5f97f032764, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: a34e1eb89354f374c96e66d284801bac, type: 2}
     - target: {fileID: 4999685053238461510, guid: e0ee91c41fee1a842b0df5f97f032764, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -60,6 +64,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: a34e1eb89354f374c96e66d284801bac, type: 2}
+    - target: {fileID: 8609169353896425672, guid: e0ee91c41fee1a842b0df5f97f032764, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2e53289987424c20aab243bb9ad21efe, type: 3}
     - target: {fileID: 9100241027252698032, guid: e0ee91c41fee1a842b0df5f97f032764, type: 3}
       propertyPath: maxQuantity
       value: 10

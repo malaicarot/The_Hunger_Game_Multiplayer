@@ -11,7 +11,7 @@ public class MapController : MonoBehaviour
         floors = new List<PlatformEffector2D>();
         foreach (Transform child in transform)
         {
-            if (child.name == "Floor")
+            if (child.name == "Ground")
             {
                 PlatformEffector2D effector = child.GetComponent<PlatformEffector2D>();
                 if (effector != null)

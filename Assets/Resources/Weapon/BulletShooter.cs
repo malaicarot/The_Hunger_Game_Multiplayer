@@ -2,10 +2,11 @@ using Photon.Pun;
 using UnityEngine;
 public class BulletShooter : MonoBehaviour
 {
-    [SerializeField] private float bulletForce = 10.0f;
+    [SerializeField] float bulletForce = 50f;
     [SerializeField] LayerMask playerMask;
     [SerializeField] float bulletCheckDistance = 0.2f;
     PhotonView photonView;
+    
 
     void Start()
     {
@@ -17,24 +18,9 @@ public class BulletShooter : MonoBehaviour
         }
     }
 
-    // void OnTriggerEnter2D(Collider2D other)
-    // {
-    //     if (other.gameObject.CompareTag("Player"))
-    //     {
-    //         Destroy(gameObject);
-    //     }
-    //     else if (other.gameObject.CompareTag("Boundary"))
-    //     {
-    //         Destroy(gameObject);
-    //     }
-    // }
-
-    void FixedUpdate()
+    void Update()
     {
-
         CollisionChecking();
-
-
     }
 
     void CollisionChecking()
@@ -50,16 +36,5 @@ public class BulletShooter : MonoBehaviour
             enemyRb.velocity = Vector2.zero;
             enemyRb.AddForce(forceDirection * bulletForce, ForceMode2D.Impulse);
         }
-    }
-
-
-    [PunRPC]
-    void ForceAffected(int playerId)
-    {
-        Debug.Log("THIS IS PLAYER!!!!!!");
-        // Rigidbody2D enemyRb = other.GetComponent<Rigidbody2D>();
-        // Vector2 forceDirection = (other.transform.position - transform.position).normalized;
-        // enemyRb.velocity = Vector2.zero;
-        // enemyRb.AddForce(forceDirection * bulletForce, ForceMode2D.Impulse);
     }
 }

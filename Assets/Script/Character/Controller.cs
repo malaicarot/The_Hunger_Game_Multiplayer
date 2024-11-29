@@ -6,14 +6,13 @@ using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
+
+    [SerializeField] GameObject bodyGameObject;
     [SerializeField] float speed = 6f;
     [SerializeField] float jumpForce = 6f;
     [SerializeField] float fallSpeed = -10f;
     [SerializeField] float checkDistance = 1f;
     [SerializeField] LayerMask groundMask;
-    [SerializeField] float bulletSpeed;
-
-
     [SerializeField] GameObject[] WeaponPrefabs;
     [SerializeField] GameObject[] BulletPrefab;
     [SerializeField] Transform firePoint;
@@ -49,11 +48,13 @@ public class Controller : MonoBehaviour
     int weaponIndex;
     int bulletIndex;
 
+    float fireRateCountdown;
+
     void Start()
     {
         photonView = GetComponent<PhotonView>();
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
+        animator = bodyGameObject.GetComponent<Animator>();
         map = FindObjectOfType<MapController>();
         bombBag = GetComponent<BombController>();
         if (photonView.IsMine)
@@ -86,12 +87,12 @@ public class Controller : MonoBehaviour
 
             if (moveInput.x > 0)
             {
-                transform.rotation = Quaternion.Euler(0, 180, 0);
+                bodyGameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
                 PlayerRotation = Vector2.right;
             }
             else if (moveInput.x < 0)
             {
-                transform.rotation = playerRotation;
+                bodyGameObject.transform.rotation = playerRotation;
                 PlayerRotation = Vector2.left;
             }
             /***************************************************/
@@ -99,12 +100,18 @@ public class Controller : MonoBehaviour
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             }
+             
 
-            if (Input.GetButtonDown("Fire1") && myGun != null)
+            if(fireRateCountdown > 0){
+                fireRateCountdown -= Time.deltaTime;
+            }
+
+            if (Input.GetButtonDown("Fire1") && myGun != null && fireRateCountdown <= 0)
             {
                 Vector3 muzzle = firePoint.position;
                 Quaternion bulletRotation = firePoint.rotation;
-                photonView.RPC("RPC_GetBullet", RpcTarget.All, myGun.gunType, muzzle, bulletRotation, PlayerRotation * bulletSpeed);
+                photonView.RPC("RPC_GetBullet", RpcTarget.All, myGun.gunType, muzzle, bulletRotation, PlayerRotation * myGun.bulletSpeed);
+                fireRateCountdown = myGun.GetFireRate();
             }
         }
     }
@@ -236,8 +243,7 @@ public class Controller : MonoBehaviour
     [PunRPC]
     public void RPC_SpawnWeapon(WeaponType type, int playerID)
     {
-        PhotonView playerPhotonView = PhotonView.Find(playerID);
-        Transform target = playerPhotonView.gameObject.transform;
+        Transform target = bodyGameObject.transform;
         if (currentWeapon != null)
         {
             Destroy(currentWeapon);
@@ -266,6 +272,7 @@ public class Controller : MonoBehaviour
         weapon.transform.SetParent(target);
         weapon.transform.localPosition = new Vector3(0f, -0.6f, 0f);
         weapon.transform.localRotation = Quaternion.identity;
+        fireRateCountdown = 0;
     }
 
     [PunRPC]

@@ -5,7 +5,7 @@ using UnityEngine;
 public class BackgroundMover : MonoBehaviour
 {
    [SerializeField] Renderer bckRenderer;
-   float speed = 0.3f;
+   [SerializeField] float speed = 0.3f;
 
     void Update()
     {

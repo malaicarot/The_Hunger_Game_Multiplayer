@@ -14,6 +14,9 @@ public class Shooting : MonoBehaviourPunCallbacks
 {
     [SerializeField] float timeExits = 10f;
     [SerializeField] GameObject ExplosionPrefab;
+
+    [SerializeField] float fireRate = 0.5f;
+    public float bulletSpeed = 50;
     public string gunType;
 
     void Start()
@@ -24,7 +27,6 @@ public class Shooting : MonoBehaviourPunCallbacks
         }else{
             StartCoroutine(Explosion());
         }
-
     }
     IEnumerator Explosion()
     {
@@ -38,6 +40,10 @@ public class Shooting : MonoBehaviourPunCallbacks
     {
         yield return new WaitForSeconds(timeExits);
         Destroy(gameObject);
+    }
+
+    public float GetFireRate(){
+        return fireRate;
     }
 
 }

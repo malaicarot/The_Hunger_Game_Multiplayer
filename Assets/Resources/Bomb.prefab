@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.3120008, y: -0.23900005, z: -0.07722564}
-  m_LocalScale: {x: 0.49999997, y: 0.49999997, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -130,6 +130,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeExits: 10
   ExplosionPrefab: {fileID: 6364559037224406732, guid: e893f704a5f0a4140bdd0d22b4049b49, type: 3}
+  fireRate: 0.5
+  bulletSpeed: 50
   gunType: Bomb
 --- !u!61 &-1367279334594253469
 BoxCollider2D:
