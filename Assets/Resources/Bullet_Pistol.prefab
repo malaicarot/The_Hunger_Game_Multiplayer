@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 464e90e95594cd949814b3150b6895a5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 783bd3b3a8e1a304ab9ada090831e4ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletForce: 40
+  bulletForce: 60
   playerMask:
     serializedVersion: 2
     m_Bits: 64

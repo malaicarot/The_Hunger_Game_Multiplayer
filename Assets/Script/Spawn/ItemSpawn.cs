@@ -27,9 +27,10 @@ public class ItemSpawn : MonoBehaviourPun
 
     void ItemSpawner()
     {
-        float randomX = Random.Range(-20f, 20f);
+        float randomX = Random.Range(-29f, 29f);
+        float randomY = Random.Range(10f, -12f);
         int randomItem = Random.Range(0, 5);
-        Vector3 itemSpawner = new Vector3(randomX, 0.3f, 0f);
+        Vector3 itemSpawner = new Vector3(randomX, randomY, 0f);
         GameObject item = PhotonNetwork.Instantiate(ItemsPrefabs[randomItem].name, itemSpawner, Quaternion.identity);
         item.name = ItemsPrefabs[randomItem].name;
     }

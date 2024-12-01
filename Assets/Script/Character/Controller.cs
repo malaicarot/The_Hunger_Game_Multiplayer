@@ -16,12 +16,9 @@ public class Controller : MonoBehaviour
     [SerializeField] GameObject[] WeaponPrefabs;
     [SerializeField] GameObject[] BulletPrefab;
     [SerializeField] Transform firePoint;
-    [SerializeField] GameObject ResultUI;
-    [SerializeField] GameObject BombBag;
-    float amplitude = 0.5f;
-    [SerializeField] float frequency = -20f;
+    [SerializeField] GameObject ResultPanel;
+    [SerializeField] Canvas ParentCanvas;
     Vector3 PlayerRotation;
-
     Rigidbody2D rb;
     public Rigidbody2D Rb { get; }
     Animator animator;
@@ -50,6 +47,8 @@ public class Controller : MonoBehaviour
 
     float fireRateCountdown;
 
+    GameRoomManager gameManager;
+
     void Start()
     {
         photonView = GetComponent<PhotonView>();
@@ -57,10 +56,7 @@ public class Controller : MonoBehaviour
         animator = bodyGameObject.GetComponent<Animator>();
         map = FindObjectOfType<MapController>();
         bombBag = GetComponent<BombController>();
-        if (photonView.IsMine)
-        {
-            photonView.RPC("RPC_HideReSultPanel", RpcTarget.All);
-        }
+        gameManager = FindObjectOfType<GameRoomManager>();
     }
 
     void Update()
@@ -87,7 +83,7 @@ public class Controller : MonoBehaviour
 
             if (moveInput.x > 0)
             {
-                bodyGameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
+                bodyGameObject.transform.rotation = Quaternion.Euler(0, -180, 0);
                 PlayerRotation = Vector2.right;
             }
             else if (moveInput.x < 0)
@@ -100,9 +96,10 @@ public class Controller : MonoBehaviour
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             }
-             
 
-            if(fireRateCountdown > 0){
+
+            if (fireRateCountdown > 0)
+            {
                 fireRateCountdown -= Time.deltaTime;
             }
 
@@ -133,7 +130,6 @@ public class Controller : MonoBehaviour
                 rb.velocity = new Vector2(moveVelocity.x, rb.velocity.y);
             }
             /***************************************************/
-
             if (isDown)
             {
                 map.SettingSurfaceArc();
@@ -146,7 +142,6 @@ public class Controller : MonoBehaviour
                 rb.velocity = new Vector2(rb.velocity.x, Mathf.Max(rb.velocity.y, fallSpeed));
             }
         }
-
     }
 
 
@@ -159,10 +154,13 @@ public class Controller : MonoBehaviour
     {
         if (other.CompareTag("Boundary"))
         {
-            GameRoomManager gameManager = FindObjectOfType<GameRoomManager>();
-            isDeath = true;
-            gameManager.PlayerFallOut(photonView.OwnerActorNr);
-            StartCoroutine(DestroyPlayer());
+            if (gameManager != null && photonView.IsMine)
+            {
+                isDeath = true;
+                gameManager.PlayerFallOut(photonView.OwnerActorNr);
+                InitResultPanel("lose");
+                StartCoroutine(DestroyPlayer());
+            }
         }
         else if (other.CompareTag("Item"))
         {
@@ -196,31 +194,6 @@ public class Controller : MonoBehaviour
         }
     }
 
-    public void ActiveReSultPanel()
-    {
-        photonView.RPC("RPC_ActiveReSultPanel", RpcTarget.All);
-    }
-
-    [PunRPC]
-    void RPC_ActiveReSultPanel()
-    {
-        BombBag.SetActive(false);
-        StartCoroutine(AppearMedal());
-    }
-
-    IEnumerator AppearMedal(){
-        yield return new WaitForSeconds(2f);
-        ResultUI.SetActive(true);
-        float newY = Mathf.Sin(frequency) * amplitude;
-        ResultUI.transform.position = new Vector2(ResultUI.transform.position.x, ResultUI.transform.position.y + newY);
-    }
-
-    [PunRPC]
-    void RPC_HideReSultPanel()
-    {
-        ResultUI.SetActive(false);
-    }
-    
     [PunRPC]
     public void RPC_DestroyItem(int itemId)
     {
@@ -297,5 +270,22 @@ public class Controller : MonoBehaviour
         SoundController._instance.ShootAudioPlay(type);
         bullet.GetComponent<Rigidbody2D>().velocity = velocity;
         Destroy(bullet, 4f);
+    }
+
+    public void InitResultPanel(string result)
+    {
+        Canvas canvas = Instantiate(ParentCanvas);
+        GameObject resultPanel = Instantiate(ResultPanel);
+        resultPanel.transform.SetParent(canvas.transform, false);
+        TextMeshProUGUI resultText = resultPanel.GetComponentInChildren<TextMeshProUGUI>();
+        switch (result)
+        {
+            case "win":
+                resultText.text = "YOU WIN!";
+                break;
+            case "lose":
+                resultText.text = "YOU LOSE!";
+                break;
+        }
     }
 }

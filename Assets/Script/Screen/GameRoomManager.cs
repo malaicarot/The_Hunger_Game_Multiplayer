@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
 using Photon.Realtime;
+using TMPro;
 using UnityEngine;
 
 public class GameRoomManager : MonoBehaviourPunCallbacks
 {
-    public GameObject[] PlayerPrefabs;
+    [SerializeField] GameObject[] PlayerPrefabs;
     Dictionary<int, bool> PlayerAliveStatus = new Dictionary<int, bool>();
     Dictionary<int, GameObject> PlayerObject = new Dictionary<int, GameObject>();
 
@@ -25,12 +26,6 @@ public class GameRoomManager : MonoBehaviourPunCallbacks
             PlayerAliveStatus[player.ActorNumber] = true;
         }
         StartCoroutine(PlayerMusic());
-
-        // if(PhotonNetwork.IsMasterClient){
-            
-        // }
-
-        
     }
     void GetPlayerPrefabs()
     {
@@ -61,21 +56,27 @@ public class GameRoomManager : MonoBehaviourPunCallbacks
         }
         if (alives == 1)
         {
-            // Player lastPlayer = PhotonNetwork.CurrentRoom.GetPlayer(lastPlayerID);
-            if (PlayerObject.TryGetValue(lastPlayerID, out GameObject lastPlayerObject))
+            GetPlayerGameObject(lastPlayerID, "win");
+
+        }
+        else if (alives > 1)
+        {
+            GetPlayerGameObject(playerId, "lose");
+        }
+    }
+    void GetPlayerGameObject(int id, string result)
+    {
+        if (PlayerObject.TryGetValue(id, out GameObject lastPlayerObject))
+        {
+            var playerScript = lastPlayerObject.GetComponent<Controller>();
+            playerScript.InitResultPanel(result);
+            if (!isLeaveRoom)
             {
-                var playerScript = lastPlayerObject.GetComponent<Controller>();
-                playerScript.ActiveReSultPanel();
-                if (!isLeaveRoom)
-                {
-                    isLeaveRoom = true;
-                    photonView.RPC("RPC_AllLeaveRoom", RpcTarget.All);
-                }
+                isLeaveRoom = true;
+                photonView.RPC("RPC_AllLeaveRoom", RpcTarget.All);
             }
         }
     }
-
-
     [PunRPC]
     void RPC_AllLeaveRoom()
     {
@@ -90,10 +91,12 @@ public class GameRoomManager : MonoBehaviourPunCallbacks
         isLeaveRoom = false;
     }
 
-    IEnumerator PlayerMusic(){
+    IEnumerator PlayerMusic()
+    {
         yield return new WaitForSeconds(2f);
         SoundController._instance.PlayBackgroundMusic();
     }
+
 
     void OnGUI()
     {

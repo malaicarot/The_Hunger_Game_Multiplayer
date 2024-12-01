@@ -17,13 +17,4 @@ public class PlayerName : MonoBehaviour
             playerName.text = photonView.Owner.NickName;
         }
     }
-
-    void Update()
-    {
-        if (playerName != null)
-        {
-            playerName.transform.rotation = Quaternion.identity;
-        }
-
-    }
 }

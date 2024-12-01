@@ -9,7 +9,7 @@ public class BombController : MonoBehaviourPun
     public int bombQuantity;
     [SerializeField] int maxQuantity = 5;
     [SerializeField] GameObject BombPrefab;
-
+    [SerializeField] Transform throwPoint;
     [SerializeField] TextMeshProUGUI _BombQuantity;
     void Start()
     {
@@ -22,10 +22,9 @@ public class BombController : MonoBehaviourPun
         {
             if (Input.GetKeyDown(KeyCode.Q))
             {
-                Throwing();
+                Throwing();  
             }
             photonView.RPC("RPC_UpdateBombBag", RpcTarget.All, bombQuantity);
-
         }
     }
 
@@ -42,13 +41,12 @@ public class BombController : MonoBehaviourPun
     void UpdateBombQuantity()
     {
         _BombQuantity.text = $": {bombQuantity.ToString()}";
-
     }
 
     [PunRPC]
     void RPC_ThrowBomb()
     {
-        GameObject bomb = Instantiate(BombPrefab, transform.position, Quaternion.identity);
+        GameObject bomb = Instantiate(BombPrefab, throwPoint.position, Quaternion.identity);
     }
 
     [PunRPC]
